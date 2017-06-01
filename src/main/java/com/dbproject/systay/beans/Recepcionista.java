@@ -18,11 +18,11 @@ public class Recepcionista extends Funcionario{
     public Recepcionista() {
     }
 
-    public Recepcionista(double salario, Date dataAdmissao, Login login, String cpf, String nome, Endereco endereco, Date data_nascimento, Telefone telefone) {
+    public Recepcionista(double salario, Date dataAdmissao, Login login, String cpf, String nome, Endereco endereco, Date data_nascimento, List<Telefone> telefone) {
         super(salario, dataAdmissao, login, cpf, nome, endereco, data_nascimento, telefone);
     }
 
-    public Recepcionista(double bonus, double salario, Date dataAdmissao, Login login, String cpf, String nome, Endereco endereco, Date data_nascimento, Telefone telefone) {
+    public Recepcionista(double bonus, double salario, Date dataAdmissao, Login login, String cpf, String nome, Endereco endereco, Date data_nascimento, List<Telefone> telefone) {
         super(salario, dataAdmissao, login, cpf, nome, endereco, data_nascimento, telefone);
         this.bonus = bonus;
     }

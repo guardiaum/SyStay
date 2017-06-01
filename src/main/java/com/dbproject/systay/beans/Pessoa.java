@@ -17,7 +17,7 @@ public class Pessoa {
     private String nome;
     private Endereco endereco;
     private Date data_nascimento;
-    private Telefone telefone;
+    private List<Telefone> telefone;
 
     public Pessoa() {
     }
@@ -28,7 +28,7 @@ public class Pessoa {
         this.data_nascimento = data_nascimento;
     }
 
-    public Pessoa(String cpf, String nome, Endereco endereco, Date data_nascimento, Telefone telefone) {
+    public Pessoa(String cpf, String nome, Endereco endereco, Date data_nascimento, List<Telefone> telefone) {
         this.numeroDocumento = cpf;
         this.nome = nome;
         this.endereco = endereco;
@@ -68,11 +68,11 @@ public class Pessoa {
         this.data_nascimento = data_nascimento;
     }
 
-    public Telefone getTelefone() {
+    public List<Telefone> getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Telefone telefone) {
+    public void setTelefone(List<Telefone> telefone) {
         this.telefone = telefone;
     }
     

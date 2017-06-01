@@ -28,7 +28,8 @@ public class HospedeDaoImpl implements HospedeDao{
     
     @Override
     public int save(Hospede h){  
-         String query="insert into tb_hospede(numeroDocumento,nome) values('"+h.getNumeroDocumento()+"','"+h.getNome()+"')"; 
+          String query="insert into tb_hospede(numeroDocumento,nome, lista_fones, endereco, observacao) values('"+h.getNumeroDocumento()+"','"+h.getNome()+"', tp_fones(tp_fone('"+h.getTelefone().get(0).getCod_area()+"', '"+h.getTelefone().get(0).getNumero()+"'), tp_fone('"+h.getTelefone().get(1).getCod_area()+"', '"+h.getTelefone().get(1).getNumero()+"'), tp_fone('"+h.getTelefone().get(2).getCod_area()+"', '"+h.getTelefone().get(2).getNumero()+"'), tp_fone('"+h.getTelefone().get(3).getCod_area()+"', '"+h.getTelefone().get(3).getNumero()+"')), tp_endereco('"+h.getEndereco().getRua()+"',"+h.getEndereco().getNumero()+",'"+h.getEndereco().getComplemento()+"','"+h.getEndereco().getBairro()+"','"+h.getEndereco().getCidade()+"','"+h.getEndereco().getEstado()+"',"+h.getEndereco().getCep()+"),'"+h.getObservacao()+"')"; 
+         System.out.println(query);
          return template.update(query);  
     }  
     
