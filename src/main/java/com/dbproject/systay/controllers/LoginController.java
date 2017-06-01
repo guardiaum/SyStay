@@ -40,8 +40,8 @@ public class LoginController {
     public ModelAndView loginProcess(@ModelAttribute("login")Login login, Model model) {
         model.addAttribute("login", new Login());
         ModelAndView mav = null;
-        boolean user = funcionarioService.validarUsuario(login);
-        if (user) {
+        Funcionario user = funcionarioService.validarUsuario(login);
+        if (user.getLogin()!=null) {
             mav = new ModelAndView("home");
             mav.addObject("username", login.getUsername());
         } else {

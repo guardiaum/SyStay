@@ -8,23 +8,29 @@ package com.dbproject.systay.dao.impl;
 import com.dbproject.systay.beans.Funcionario;
 import com.dbproject.systay.beans.Login;
 import com.dbproject.systay.dao.interfaces.FuncionarioDao;
+import com.dbproject.systay.dao.rowmappers.FuncionarioRowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.activation.DataSource;
+import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author johny
  */
+@Repository("funcionaorioDao")
 public class FuncionarioDaoImpl implements FuncionarioDao {
-    /*@Autowired
-    DataSource dataSource;
-    
-    @Autowired
-    JdbcTemplate jdbcTemplate;*/
+    @Inject private NamedParameterJdbcOperations jdbcTemplate;
+    @Inject private FuncionarioRowMapper funcionarioRowMapper;
     
     @Override
     public void cadastrar(Funcionario funcionario) {
@@ -32,38 +38,36 @@ public class FuncionarioDaoImpl implements FuncionarioDao {
     }
 
     @Override
-    public boolean validarUsuario(Login login) {
-        /*String sql = "select * from tb_login where username='" + login.getUsername() + "' and senha='" + login.getSenha()+ "'";
+    public Funcionario validarUsuario(Login login) {
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("username", login.getUsername());
         
-        List<Login> logins = jdbcTemplate.query(sql, new LoginMapper());
+        String GET_SQL = "SELECT f.* FROM tb_funcionario as f, tb_login as l "
+                + "WHERE f. = :locationId";
         
-        if (logins.size() > 0)
-            logins.get(0);
-        */
-        return true;
+        //List<Funcionario> funcionarios = jdbcTemplate.query(GET_SQL, params, funcionarioRowMapper);
+        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        Funcionario f1 = new Funcionario();
+        f1.setNumeroDocumento("1234555");
+        f1.setNome("Joao");
+        f1.setLogin(new Login("joao","1234"));
+        funcionarios.add(f1);
+        return funcionarios.isEmpty()?null:funcionarios.get(0);
     }
-    
-    class FuncionarioMapper implements RowMapper<Funcionario> {
-        public Funcionario mapRow(ResultSet rs, int arg1) throws SQLException {
-            Funcionario funcionario = new Funcionario();
-            funcionario.setCpf(rs.getString("cpf"));
-            funcionario.setDataAdmissao(rs.getDate("data_admissao"));
-            funcionario.setDataDemissao(rs.getDate("data_admissao"));
 
-            Login l = new Login(rs.getString("username"), rs.getString("senha"));
-            funcionario.setLogin(l);
-            
-            return funcionario;
-        }
+    @Override
+    public List<Funcionario> getFuncionarios() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    class LoginMapper implements RowMapper<Login> {
-        public Login mapRow(ResultSet rs, int arg1) throws SQLException {
-            Login login = new Login();
-            login.setUsername(rs.getString("username"));
-            login.setSenha(rs.getString("senha"));
-            return login;
-        }
+
+    @Override
+    public void updateFuncionario(Funcionario funcionario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteFuncionario(String cpf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

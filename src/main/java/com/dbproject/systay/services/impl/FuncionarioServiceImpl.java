@@ -25,7 +25,7 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public boolean validarUsuario(Login login) {
+    public Funcionario validarUsuario(Login login) {
         return funcionarioDao.validarUsuario(login);
     }
     

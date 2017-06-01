@@ -7,6 +7,7 @@ package com.dbproject.systay.dao.interfaces;
 
 import com.dbproject.systay.beans.Funcionario;
 import com.dbproject.systay.beans.Login;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,8 @@ import com.dbproject.systay.beans.Login;
  */
 public interface FuncionarioDao {
     void cadastrar(Funcionario funcionario);
-    boolean validarUsuario(Login login);
+    List<Funcionario> getFuncionarios();
+    void updateFuncionario(Funcionario funcionario);
+    void deleteFuncionario(String cpf);
+    Funcionario validarUsuario(Login login);
 }

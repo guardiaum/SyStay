@@ -13,7 +13,7 @@ import java.util.List;
  * @author johny
  */
 public class Pessoa {
-    private String cpf;
+    private String numeroDocumento;
     private String nome;
     private Endereco endereco;
     private Date data_nascimento;
@@ -23,25 +23,25 @@ public class Pessoa {
     }
 
     public Pessoa(String cpf, String nome, Date data_nascimento) {
-        this.cpf = cpf;
+        this.numeroDocumento = cpf;
         this.nome = nome;
         this.data_nascimento = data_nascimento;
     }
 
     public Pessoa(String cpf, String nome, Endereco endereco, Date data_nascimento, List telefones) {
-        this.cpf = cpf;
+        this.numeroDocumento = cpf;
         this.nome = nome;
         this.endereco = endereco;
         this.data_nascimento = data_nascimento;
         this.telefones = telefones;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
 
     public String getNome() {

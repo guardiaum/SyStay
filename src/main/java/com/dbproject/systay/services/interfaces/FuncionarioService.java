@@ -16,6 +16,6 @@ public interface FuncionarioService {
 
   void register(Funcionario funcionario);
 
-  boolean validarUsuario(Login login);
+  Funcionario validarUsuario(Login login);
 
 }
