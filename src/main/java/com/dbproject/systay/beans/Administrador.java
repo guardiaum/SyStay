@@ -18,8 +18,8 @@ public class Administrador extends Funcionario{
     public Administrador() {
     }
 
-    public Administrador(String cargo, double salario, Date dataAdmissao, Login login, String cpf, String nome, Endereco endereco, Date data_nascimento, List telefones) {
-        super(salario, dataAdmissao, login, cpf, nome, endereco, data_nascimento, telefones);
+    public Administrador(String cargo, double salario, Date dataAdmissao, Login login, String cpf, String nome, Endereco endereco, Date data_nascimento, Telefone telefone) {
+        super(salario, dataAdmissao, login, cpf, nome, endereco, data_nascimento, telefone);
         this.cargo = cargo;
     }
 

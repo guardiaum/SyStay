@@ -19,8 +19,8 @@ public class Hospede extends Pessoa {
     public Hospede() {
     }
     
-    public Hospede(String observacao, String cpf, String nome, Endereco endereco, Date data_nascimento, List telefones) {
-        super(cpf, nome, endereco, data_nascimento, telefones);
+    public Hospede(String observacao, String numeroDocumento, String nome, Endereco endereco, Date data_nascimento, Telefone telefone) {
+        super(numeroDocumento, nome, endereco, data_nascimento, telefone);
         this.observacao = observacao;
     }
 

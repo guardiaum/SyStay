@@ -11,23 +11,25 @@ package com.dbproject.systay.beans;
  */
 public class Endereco {
     private String rua;
-    private String numero;
+    private int numero;
     private String complemento;
     private String bairro;
     private String cidade;
     private String estado;
+    private long cep;
     private String pais;
 
     public Endereco() {
     }
     
-    public Endereco(String rua, String numero, String complemento, String bairro, String cidade, String estado, String pais) {
+    public Endereco(String rua, int numero, String complemento, String bairro, String cidade, String estado, long cep, String pais) {
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
+        this.cep = cep;
         this.pais = pais;
     }
 
@@ -39,12 +41,20 @@ public class Endereco {
         this.rua = rua;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public long getCep() {
+        return numero;
+    }
+
+    public void setCep(long cep) {
+        this.cep = cep;
     }
 
     public String getComplemento() {
