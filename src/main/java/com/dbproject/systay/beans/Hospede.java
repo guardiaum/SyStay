@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author johny
  */
+
 public class Hospede extends Pessoa {
     private String observacao;
 

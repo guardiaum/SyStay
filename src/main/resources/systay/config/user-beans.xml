@@ -9,9 +9,13 @@
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:component-scan base-package="com.dbproject.systay" />
+        <context:component-scan base-package="com.dbproject.systay.impl" />
+
 	<context:annotation-config />
 
 	<bean id="funcionarioService" class="com.dbproject.systay.services.impl.FuncionarioServiceImpl" />
+       <bean id="hospedeService" class="com.dbproject.systay.services.impl.HospedeServiceImpl" />
+        
 	<!--<bean id="userDao" class="com.dbproject.systay.dao.impl.FuncionarioDaoImpl" />-->
         
         <!--

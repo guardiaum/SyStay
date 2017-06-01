@@ -16,5 +16,6 @@
                 the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
+         <a href="cadastrarhospede">Cadastrar Hóspede</a>
     </body>
 </html>
