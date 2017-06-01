@@ -8,14 +8,6 @@ package com.dbproject.systay.dao.impl;
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.dbproject.systay.beans.Hospede;
 import com.dbproject.systay.dao.interfaces.HospedeDao;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-import javax.inject.Inject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 
 
@@ -36,13 +28,8 @@ public class HospedeDaoImpl implements HospedeDao{
     
     @Override
     public int save(Hospede h){  
-         //String query="insert into tb_hospede(numeroDocumento,nome) values('12', 'Johny')";  
-         System.out.println("HospedeDaoImpldsa");
-         System.out.println(h.getNumeroDocumento());
-         System.out.println(h.getNome());
-         System.out.println("HospedeDaoImplfim");
-         String query="insert into tb_hospede(numeroDocumento,nome) values('"+h.getNumeroDocumento()+"',"+h.getNome()+"')";  
-        return template.update(query);  
+         String query="insert into tb_hospede(numeroDocumento,nome) values('"+h.getNumeroDocumento()+"','"+h.getNome()+"')"; 
+         return template.update(query);  
     }  
     
     @Override

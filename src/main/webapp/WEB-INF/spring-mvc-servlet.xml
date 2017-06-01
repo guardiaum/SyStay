@@ -11,14 +11,28 @@
 	<import resource="classpath:systay/config/user-beans.xml" />
         <import resource="classpath:systay/config/database.xml"/>
         
-	<!--<context:component-scan base-package="com.dbproject.systay" />
-	<context:annotation-config />-->
-        <!--<bean id="funcionarioService" class="com.dbproject.systay.services.impl.FuncionarioServiceImpl" />-->
-	<!--<bean id="funcionarioDao" class="com.dbproject.systay.dao.impl.FuncionarioDaoImpl" />-->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-       
+        
+        <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+            <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>  
+            <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>  
+            <property name="username" value="system"></property>  
+            <property name="password" value="oracledb"></property>  
+        </bean>  
+  
+        <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">  
+            <property name="dataSource" ref="ds"></property>  
+        </bean>  
+        
+        <bean id="hospedeService" class="com.dbproject.systay.services.impl.HospedeServiceImpl" />
+        
+        <bean id="hospedeDao" class="com.dbproject.systay.dao.impl.HospedeDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean> 
+        
+        <bean id="funcionarioService" class="com.dbproject.systay.services.impl.FuncionarioServiceImpl" /> 
 </beans>

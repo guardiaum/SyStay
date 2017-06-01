@@ -6,13 +6,10 @@
 package com.dbproject.systay.controllers;
 
 import com.dbproject.systay.beans.Hospede;
-import com.dbproject.systay.dao.impl.HospedeDaoImpl;
 import com.dbproject.systay.services.interfaces.HospedeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,8 +31,9 @@ public class HospedeController {
      
     @RequestMapping(value="/save",method = RequestMethod.POST)  
     public ModelAndView save(@ModelAttribute("hospede") Hospede hospede){  
+         System.out.println("HospedeDaoImplfim");
         hospedeservice.save(hospede);  
-        return new ModelAndView("redirect:/viewhospede");
+        return new ModelAndView("redirect:/cadastrarhospede");
     }  
 //    /* It provides list of employees in model object */  
 //    @RequestMapping("/viewhospede")  
