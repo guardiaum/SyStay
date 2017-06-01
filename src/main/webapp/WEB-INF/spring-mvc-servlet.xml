@@ -7,9 +7,17 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-	<import resource="classpath:systay/config/user-beans.xml" />
-        <import resource="classpath:systay/config/database.xml"/>
+    
+        <context:component-scan base-package="com.dbproject.systay" />
+        <context:component-scan base-package="com.dbproject.systay.impl" />
+	<context:annotation-config />
+	<!--<import resource="classpath:systay/config/user-beans.xml" />-->
+        
+        <bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="location">
+		<value>/WEB-INF/database.properties</value>
+            </property>
+        </bean>
         
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -17,23 +25,29 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
         
-        <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
-            <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>  
-            <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>  
-            <property name="username" value="system"></property>  
-            <property name="password" value="oracledb"></property>  
-        </bean>  
+        <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="${jdbc.driverClassName}"></property>  
+            <property name="url" value="${jdbc.url}"></property>  
+            <property name="username" value="${jdbc.username}"></property>  
+            <property name="password" value="${jdbc.password}"></property>
+        </bean>
   
         <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">  
             <property name="dataSource" ref="ds"></property>  
         </bean>  
         
         <bean id="hospedeService" class="com.dbproject.systay.services.impl.HospedeServiceImpl" />
-        
         <bean id="hospedeDao" class="com.dbproject.systay.dao.impl.HospedeDaoImpl">
             <property name="template" ref="jt"></property>  
         </bean> 
         
+        <bean id="loginService" class="com.dbproject.systay.services.impl.LoginServiceImpl" /> 
+        <bean id="loginDao" class="com.dbproject.systay.dao.impl.LoginDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean> 
         
-        <bean id="funcionarioService" class="com.dbproject.systay.services.impl.FuncionarioServiceImpl" /> 
+        <bean id="adminService" class="com.dbproject.systay.services.impl.AdminServiceImpl" />
+        <bean id="adminDao" class="com.dbproject.systay.dao.impl.AdminDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean> 
 </beans>

@@ -5,9 +5,8 @@
  */
 package com.dbproject.systay.controllers;
 
-import com.dbproject.systay.beans.Funcionario;
 import com.dbproject.systay.beans.Login;
-import com.dbproject.systay.services.interfaces.FuncionarioService;
+import com.dbproject.systay.services.interfaces.LoginService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,23 +25,24 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     @Autowired
-    public FuncionarioService funcionarioService;
+    public LoginService loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("login", new Login());
-        return mav;
+    public String showLogin(Model model) {
+        model.addAttribute("login", new Login());
+        //ModelAndView mav = new ModelAndView("login");
+        //mav.addObject("login", new Login());
+        return "login";
     }
 
     @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-    public ModelAndView loginProcess(@ModelAttribute("login")Login login, Model model) {
+    public ModelAndView loginProcess(@ModelAttribute("login") Login login, Model model) {
         model.addAttribute("login", new Login());
         ModelAndView mav = null;
-        Funcionario user = funcionarioService.validarUsuario(login);
-        if (user.getLogin()!=null) {
+        Login confirm = loginService.validarUsuario(login);
+        if (confirm.getUsername() != null) {
             mav = new ModelAndView("home");
-            mav.addObject("username", login.getUsername());
+            mav.addObject("username", confirm.getUsername());
         } else {
             mav = new ModelAndView("login");
             mav.addObject("message", "Username or Password is wrong!!");

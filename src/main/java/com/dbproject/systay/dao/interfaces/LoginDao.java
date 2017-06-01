@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dbproject.systay.services.interfaces;
+package com.dbproject.systay.dao.interfaces;
 
-import com.dbproject.systay.beans.Funcionario;
 import com.dbproject.systay.beans.Login;
 
 /**
  *
  * @author johny
  */
-public interface FuncionarioService {
-
-  void register(Funcionario funcionario);
-
-  Funcionario validarUsuario(Login login);
-
+public interface LoginDao {
+    Login validarUsuario(Login login);
 }
