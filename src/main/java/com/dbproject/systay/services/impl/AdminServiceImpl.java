@@ -26,8 +26,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public void cadastrar(Administrador administrador) {
-        adminDao.cadastrar(administrador);
+    public Administrador cadastrar(Administrador administrador) {
+        return adminDao.cadastrar(administrador);
     }
 
     @Override
@@ -36,13 +36,13 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public void atualizarAdministrador(Administrador admin) {
-        adminDao.atualizarAdministrador(admin);
+    public boolean atualizarAdministrador(Administrador admin) {
+        return adminDao.atualizarAdministrador(admin);
     }
 
     @Override
-    public void deletarAdministrador(String numeroDocumento) {
-        adminDao.deletarAdministrador(numeroDocumento);
+    public boolean deletarAdministrador(String numeroDocumento) {
+        return adminDao.deletarAdministrador(numeroDocumento);
     }
     
     

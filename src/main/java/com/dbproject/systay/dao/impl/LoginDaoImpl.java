@@ -22,7 +22,6 @@ import org.springframework.stereotype.Repository;
 @Repository("loginDao")
 public class LoginDaoImpl implements LoginDao{
     private JdbcTemplate template;
-    //@Inject private LoginRowMapper loginRowMapper;
     
     public void setTemplate(JdbcTemplate template) {  
         this.template = template;  
@@ -30,7 +29,26 @@ public class LoginDaoImpl implements LoginDao{
     
     @Override
     public Login validarUsuario(Login login) {
-        String GET_SQL = "SELECT * FROM tb_login WHERE username = '" + login.getUsername() + "'";
-        return template.queryForObject(GET_SQL, new LoginRowMapper());
+        String GET_SQL = "SELECT * FROM tb_login "
+                + "WHERE username = '" + login.getUsername() + "' AND senha='"+login.getSenha()+"'";
+        List<Login> logins = template.query(GET_SQL, new LoginRowMapper());
+        return logins.size()>0 ? logins.get(0) : null;
+    }
+
+    @Override
+    public boolean criarUsuario(Login login) {
+        String INSERT_SQL = "INSERT INTO tb_login "
+                + "VALUES(tp_login('"+login.getUsername()+"','"+login.getSenha()+"'))";
+        return template.update(INSERT_SQL)!=0;
+    }
+
+    @Override
+    public boolean deletarUsuario(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Login atualizarUsuario(Login login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

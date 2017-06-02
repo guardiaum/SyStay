@@ -16,8 +16,8 @@ import java.util.List;
 public interface AdminDao {
     
     Administrador getAdministrador(String numeroDocumento);
-    void cadastrar(Administrador administrador);
+    Administrador cadastrar(Administrador administrador);
     List<Administrador> getAdministradores();
-    void atualizarAdministrador(Administrador administrador);
-    void deletarAdministrador(String numeroDocumento);
+    boolean atualizarAdministrador(Administrador administrador);
+    boolean deletarAdministrador(String numeroDocumento);
 }

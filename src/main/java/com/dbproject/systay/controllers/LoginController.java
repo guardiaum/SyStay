@@ -28,11 +28,10 @@ public class LoginController {
     public LoginService loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLogin(Model model) {
-        model.addAttribute("login", new Login());
-        //ModelAndView mav = new ModelAndView("login");
-        //mav.addObject("login", new Login());
-        return "login";
+    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("login");
+        mav.addObject("login", new Login());
+        return mav;
     }
 
     @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
@@ -40,11 +39,11 @@ public class LoginController {
         model.addAttribute("login", new Login());
         ModelAndView mav = null;
         Login confirm = loginService.validarUsuario(login);
-        if (confirm.getUsername() != null) {
+        if (confirm != null) {
             mav = new ModelAndView("home");
             mav.addObject("username", confirm.getUsername());
         } else {
-            mav = new ModelAndView("login");
+            mav = new ModelAndView("redirect:/login");
             mav.addObject("message", "Username or Password is wrong!!");
         }
         return mav;

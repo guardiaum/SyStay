@@ -23,5 +23,20 @@ public class LoginServiceImpl implements LoginService{
     public Login validarUsuario(Login login) {
         return loginDao.validarUsuario(login);
     }
+
+    @Override
+    public boolean criarUsuario(Login login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletarUsuario(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Login atualizarUsuario(Login login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -1,0 +1,27 @@
+<%-- 
+    Document   : viewadmin
+    Created on : 01/06/2017, 18:59:20
+    Author     : johny
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Administrador Detalhes</title>
+    </head>
+    <body>
+        <a href="home.jsp?username=${admin.login.username}">Inicio</a><br/>
+        <h3>${admin.nome}</h3>
+        Número do Documento: ${admin.numeroDocumento}<br/>
+        Data de Nascimento: ${admin.data_nascimento}<br/>
+        Data de Admissão: ${admin.dataAdmissao}<br/>
+        Salário: ${admin.salario}<br/>
+        Username: ${admin.login.username}<br/>
+        Senha: *****<br/><br/><br/>
+        
+        <a href="#">Remover</a>
+        <a href="#">Atualizar</a>
+    </body>
+</html>

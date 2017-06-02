@@ -15,8 +15,8 @@ import java.util.List;
  */
 public interface AdminService {
     Administrador getAdministrador(String numeroDocumento);
-    void cadastrar(Administrador administrador);
+    Administrador cadastrar(Administrador administrador);
     List<Administrador> getAdministradores();
-    void atualizarAdministrador(Administrador admin);
-    void deletarAdministrador(String numeroDocumento);
+    boolean atualizarAdministrador(Administrador admin);
+    boolean deletarAdministrador(String numeroDocumento);
 }

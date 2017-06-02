@@ -27,18 +27,20 @@ public class AdminController {
     
     @RequestMapping("/cadastraradmin")  
     public ModelAndView showform(){  
-        return new ModelAndView("cadastrarhospede","command",new Administrador());  
+        return new ModelAndView("cadastraradmin","command",new Administrador());  
     }  
      
-    @RequestMapping(value="/cadastrar",method = RequestMethod.POST)  
-    public ModelAndView save(@ModelAttribute("Administrador") Administrador administrador){  
-        adminService.cadastrar(administrador);  
-        return new ModelAndView("redirect:/viewadmin");
+    @RequestMapping(value="/salvaradministrador",method = RequestMethod.POST)  
+    public ModelAndView cadastrar(@ModelAttribute("Administrador") Administrador administrador){  
+        administrador = adminService.cadastrar(administrador);
+        ModelAndView mv = new ModelAndView("viewadmin");
+        mv.addObject("admin", administrador);
+        return mv;
     }  
     
     /* It provides list of employees in model object */  
     @RequestMapping("/viewadmins")  
-    public ModelAndView viewAdmin(){  
+    public ModelAndView viewAdmins(){  
         List<Administrador> list = adminService.getAdministradores();  
         return new ModelAndView("viewemp","list",list);  
     }  

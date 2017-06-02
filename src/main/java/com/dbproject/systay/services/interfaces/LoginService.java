@@ -13,4 +13,7 @@ import com.dbproject.systay.beans.Login;
  */
 public interface LoginService {
     Login validarUsuario(Login login);
+    boolean criarUsuario(Login login);
+    boolean deletarUsuario(String username);
+    Login atualizarUsuario(Login login);
 }
