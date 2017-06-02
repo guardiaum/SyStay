@@ -18,6 +18,10 @@
                 <tr>    
                     <td>Nome :</td>    
                     <td><form:input path="nome" maxlength="25"/></td>  
+                </tr>    
+                <tr>    
+                    <td>Data Nascimento :</td>    
+                    <td><form:input path="data_nascimento"/></td>  
                 </tr> 
                 <tr>    
                     <td>Rua :</td>    
