@@ -35,30 +35,6 @@ public class HospedeController {
         hospedeservice.save(hospede);  
         return new ModelAndView("redirect:/cadastrarhospede");
     }  
-//    /* It provides list of employees in model object */  
-//    @RequestMapping("/viewhospede")  
-//    public ModelAndView viewhospede(){  
-//        List<Hospede> list=dao.getEmployees();  
-//        return new ModelAndView("viewemp","list",list);  
-//    }  
-    /* It displays object data into form for the given id.  
-     * The @PathVariable puts URL data into variable.*/  
-//    @RequestMapping(value="/edithospede/{numeroDocumento}")  
-//    public ModelAndView edit(@PathVariable String numeroDocumento){  
-//        Hospede hospede=dao.getEmpById(numeroDocumento);  
-//        return new ModelAndView("hospedempeditform","command",hospede);  
-//    }  
-//    /* It updates model object. */  
-//    @RequestMapping(value="/editsave",method = RequestMethod.POST)  
-//    public ModelAndView editsave(@ModelAttribute("hospede") Hospede hospede){  
-//        dao.update(hospede);  
-//        return new ModelAndView("redirect:/viewhospede");  
-//    }  
-//    /* It deletes record for the given id in URL and redirects to /viewemp */  
-//    @RequestMapping(value="/deletehospede/{numeroDocumento}",method = RequestMethod.GET)  
-//    public ModelAndView delete(@PathVariable String numeroDocumento){  
-//        dao.delete(numeroDocumento);  
-//        return new ModelAndView("redirect:/viewhospede");  
-//    }  
+
   
 }
