@@ -32,6 +32,8 @@ public class AdminController {
      
     @RequestMapping(value="/salvaradministrador",method = RequestMethod.POST)  
     public ModelAndView cadastrar(@ModelAttribute("Administrador") Administrador administrador){  
+        //System.out.println("Endereço: CEP-"+administrador.getEndereco().getCep()+
+        //        " | No-"+administrador.getEndereco().getNumero());
         administrador = adminService.cadastrar(administrador);
         ModelAndView mv = new ModelAndView("viewadmin");
         mv.addObject("admin", administrador);

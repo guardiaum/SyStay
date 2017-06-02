@@ -13,6 +13,14 @@ public class Telefone {
     public String cod_area;
     public String numero;
 
+    public Telefone() {
+    }
+
+    public Telefone(String cod_area, String numero) {
+        this.cod_area = cod_area;
+        this.numero = numero;
+    }
+
     public void setCod_area(String cod_area) {
         this.cod_area = cod_area;
     }

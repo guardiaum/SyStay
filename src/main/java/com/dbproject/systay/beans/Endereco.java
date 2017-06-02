@@ -22,7 +22,7 @@ public class Endereco {
     public Endereco() {
     }
     
-    public Endereco(String rua, int numero, String complemento, String bairro, String cidade, String estado, long cep, String pais) {
+    public Endereco(String rua, int numero, String complemento, String bairro, String cidade, String estado, long cep) {
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
@@ -30,7 +30,6 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
-        this.pais = pais;
     }
 
     public String getRua() {

@@ -50,4 +50,5 @@
         <bean id="adminDao" class="com.dbproject.systay.dao.impl.AdminDaoImpl">
             <property name="template" ref="jt"></property>  
         </bean> 
+        
 </beans>
