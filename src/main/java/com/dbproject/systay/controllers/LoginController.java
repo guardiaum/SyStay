@@ -40,7 +40,7 @@ public class LoginController {
         ModelAndView mav = null;
         Login confirm = loginService.validarUsuario(login);
         if (confirm != null) {
-            mav = new ModelAndView("home");
+            mav = new ModelAndView("redirect:/home");
             mav.addObject("username", confirm.getUsername());
         } else {
             mav = new ModelAndView("redirect:/login");

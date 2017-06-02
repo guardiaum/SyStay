@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Login</title>
+        <title>SyStay - Login</title>
     </head>
     <body>
         <h1 align="center">SyStay</h1>
@@ -30,14 +30,8 @@
                     <td></td>
                     <td align="left">
                         <form:button id="login" name="login">Login</form:button>
-                        </td>
-                    </tr>
-                    <tr></tr>
-                    <tr>
-                        <td></td>
-                        <td><a href="index.jsp">Home</a>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 </table>
         </form:form>
         <table align="center">

@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Systay - Welcome</title>
+        <title>SyStay - Welcome</title>
     </head>
     <body>
-        <h1>SYSTAY!</h1>
+        <h1>SyStay!</h1>
         <a href="login">Login</a>
     </body>
 </html>

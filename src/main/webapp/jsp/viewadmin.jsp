@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Administrador Detalhes</title>
+        <title>SyStay - Administrador</title>
     </head>
     <body>
-        <a href="home.jsp?username=${admin.login.username}">Inicio</a><br/>
+        <a href="home">Home</a>
+        <h1>SyStay</h1>
         <h3>${admin.nome}</h3>
         Número do Documento: ${admin.numeroDocumento}<br/>
         Data de Nascimento: ${admin.data_nascimento}<br/>
