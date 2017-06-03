@@ -1,5 +1,5 @@
 <%-- 
-    Document   : editarHospede
+    Document   : editarhospede
     Created on : Jun 2, 2017, 3:30:03 PM
     Author     : Chaina
 --%>

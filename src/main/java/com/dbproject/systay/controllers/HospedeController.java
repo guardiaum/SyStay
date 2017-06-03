@@ -44,10 +44,10 @@ public class HospedeController {
         return new ModelAndView("listarhospedes","list",list);  
     }  
      
-    @RequestMapping(value="/editarHospede/{numeroDocumento}")  
+    @RequestMapping(value="/editarhospede/{numeroDocumento}")  
     public ModelAndView edit(@PathVariable String numeroDocumento){  
         Hospede hospede=hospedeservice.getHospedeById(numeroDocumento);  
-        return new ModelAndView("editarHospede","command",hospede);  
+        return new ModelAndView("editarhospede","command",hospede);  
     }  
 
     @RequestMapping(value="/editsave",method = RequestMethod.POST)  

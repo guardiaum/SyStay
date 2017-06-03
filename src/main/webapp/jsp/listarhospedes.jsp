@@ -19,7 +19,7 @@
             <td>${hos.numeroDocumento}</td>  
             <td>${hos.nome}</td>
             <td><a href="exibirhospede/${hos.numeroDocumento}">Detalhes</a></td>
-            <td><a href="editarHospede/${hos.numeroDocumento}">Editar</a></td>  
+            <td><a href="editarhospede/${hos.numeroDocumento}">Editar</a></td>  
             <td><a href="daletarhospede/${hos.numeroDocumento}">Excluir</a></td>  
         </tr>  
    </c:forEach>  
