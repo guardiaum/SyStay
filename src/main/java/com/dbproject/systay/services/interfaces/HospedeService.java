@@ -6,6 +6,7 @@
 package com.dbproject.systay.services.interfaces;
 
 import com.dbproject.systay.beans.Hospede;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,6 @@ public interface HospedeService {
     int save (Hospede hospede);
     int update(Hospede hospede);
     int delete(String numeroDocumento);
+    List<Hospede> getHospedes();
+    Hospede getHospedeById(String numeroDocumento);
 }

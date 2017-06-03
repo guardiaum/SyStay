@@ -6,6 +6,7 @@
 package com.dbproject.systay.dao.interfaces;
 
 import com.dbproject.systay.beans.Hospede;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,7 @@ import com.dbproject.systay.beans.Hospede;
 public interface HospedeDao {
     int save (Hospede hospede);
     int update(Hospede hospede);
-    int delete(String numeroDocumento); 
+    int delete(String numeroDocumento);
+    List<Hospede> getHospedes();
+    Hospede getHospedeById(String numeroDocumento);
 }

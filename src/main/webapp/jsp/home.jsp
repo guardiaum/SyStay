@@ -18,7 +18,7 @@
         Bem vindo(a) <%= session.getAttribute( "theName" ) %><br/>
         <h1>SyStay</h1>
  
-        <a href="cadastrarhospede">Cadastrar Hóspede</a><br/>
+        <a href="listarhospedes">Hóspede</a><br/>
         <a href="cadastraradmin">Cadastrar Administrador</a><br/>
         <a href="cadastrararecepcionista">Cadastrar Recepcionista</a><br/>
     </body>

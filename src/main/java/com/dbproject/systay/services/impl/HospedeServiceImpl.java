@@ -8,6 +8,7 @@ package com.dbproject.systay.services.impl;
 import com.dbproject.systay.beans.Hospede;
 import com.dbproject.systay.dao.interfaces.HospedeDao;
 import com.dbproject.systay.services.interfaces.HospedeService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -32,4 +33,16 @@ public class HospedeServiceImpl implements HospedeService{
     public int delete(String numeroDocumento) {
         return hospedeDao.delete(numeroDocumento);
     }
+
+    @Override
+    public List<Hospede> getHospedes() {
+        return hospedeDao.getHospedes();
+    }
+
+    @Override
+    public Hospede getHospedeById(String numeroDocumento) {
+        return hospedeDao.getHospedeById(numeroDocumento);
+    }
+   
+    
 }

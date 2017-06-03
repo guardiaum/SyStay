@@ -34,10 +34,10 @@ public class HospedeDaoImpl implements HospedeDao{
     
     @Override
     public int save(Hospede h){ 
-
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");    
-        String data_nascimento = dateFormat.format(h.getData_nascimento());
-    
+        String  data_nascimento = dateFormat.format(h.getData_nascimento());
+        
         String query="insert into tb_hospede(numeroDocumento,nome, data_nascimento,lista_fones, endereco, observacao) "
                 + "values('"+h.getNumeroDocumento()+"','"+h.getNome()+"','"+data_nascimento+"', "
                 + "tp_fones(tp_fone('"+h.getTelefone().get(0).getCod_area()+"', '"+h.getTelefone().get(0).getNumero()+"'), "
@@ -47,33 +47,35 @@ public class HospedeDaoImpl implements HospedeDao{
                 + "tp_endereco('"+h.getEndereco().getRua()+"',"+h.getEndereco().getNumero()+",'"+h.getEndereco().getComplemento()+"',"
                 + "'"+h.getEndereco().getBairro()+"','"+h.getEndereco().getCidade()+"','"+h.getEndereco().getEstado()+"',"
                 + ""+h.getEndereco().getCep()+"),'"+h.getObservacao()+"')"; 
-         return template.update(query);  
+        return template.update(query);  
     }  
     
     @Override
     public int update(Hospede h){  
-        String query="update tb_hospede set nome="+h.getNome()+"' where numeroDocumento="+h.getNumeroDocumento()+"";  
+        String query="update tb_hospede set numeroDocumento='"+h.getNumeroDocumento()+"', nome='"+h.getNome()+"',observacao='"+h.getObservacao()+"' where numeroDocumento='"+h.getNumeroDocumento()+"'";  
         return template.update(query);  
     }  
     
     @Override
     public int delete(String numeroDocumento){  
-        String query="delete from tb_hospede where numeroDocumento="+numeroDocumento+"";  
+        String query="delete from tb_hospede where numeroDocumento='"+numeroDocumento+"'";  
         return template.update(query);  
     }  
-public Hospede getHospedeById(String numeroDocumento){  
-    String query="select * from tb_hospede where numeroDocumento=?";  
-    return template.queryForObject(query, new Object[]{numeroDocumento},new BeanPropertyRowMapper<Hospede>(Hospede.class));  
-}  
-public List<Hospede> getHospede(){  
-    return template.query("select * from tb_hospede",new RowMapper<Hospede>(){  
-        public Hospede mapRow(ResultSet rs, int row) throws SQLException {  
-            Hospede h=new Hospede();  
-            h.setNumeroDocumento(rs.getString(1));  
-            h.setNome(rs.getString(2));  
-            return h;  
-        }  
-    });  
-}
-
+    
+    public Hospede getHospedeById(String numeroDocumento){  
+        String query = "SELECT  numerodocumento, nome, data_nascimento, observacao FROM tb_hospede "
+                            + "WHERE numeroDocumento=?";
+        return template.queryForObject(query, new Object[]{numeroDocumento},new BeanPropertyRowMapper<Hospede>(Hospede.class));  
+    }
+    
+    public List<Hospede> getHospedes(){  
+        return template.query("select * from tb_hospede",new RowMapper<Hospede>(){  
+            public Hospede mapRow(ResultSet rs, int row) throws SQLException {  
+                Hospede h=new Hospede();  
+                h.setNumeroDocumento(rs.getString(1));  
+                h.setNome(rs.getString(2));  
+                return h;  
+            }  
+        });  
+    }
 }  
