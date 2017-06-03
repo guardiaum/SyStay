@@ -23,13 +23,14 @@
         <h3>${hospede.nome}</h3>
         Número do Documento: ${hospede.numeroDocumento}<br/>
         Data de Nascimento: ${hospede.data_nascimento}<br/>
-        <%Hospede h = (Hospede) request.getAttribute("hospede");%>
         <h3>Informações para contato</h3>
-        Telefone: <br/>
-        Celular: <br/>
-        Celular 2: <br/>           
-        Comercial: <br/>
-        <h3>Endereço</h3>
+         Telefone: (${hospede.telefone[0].cod_area}) ${hospede.telefone[0].numero}<br/>
+         Celular: (${hospede.telefone[1].cod_area}) ${hospede.telefone[1].numero}<br/>
+         Celular 2: (${hospede.telefone[2].cod_area}) ${hospede.telefone[2].numero}<br/>           
+         Comercial: (${hospede.telefone[3].cod_area}) ${hospede.telefone[3].numero}<br/>
+         <h3>Endereço</h3>
+         Rua ${hospede.endereco.rua}, ${hospede.endereco.numero}. ${hospede.endereco.complemento}<br/>
+         Cidade: ${hospede.endereco.cidade}, ${hospede.endereco.estado}. CEP: ${hospede.endereco.cep}
                 
     </body>
 </html>

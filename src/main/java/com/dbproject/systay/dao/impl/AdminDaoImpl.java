@@ -46,7 +46,7 @@ public class AdminDaoImpl implements AdminDao{
         List<Administrador> admins = template.query(sql, new AdminRowMapper());
         List<Administrador> aux = new ArrayList();
         for(Administrador adm : admins){
-            List<Telefone> telefones = pessoa.getTelefones(adm, template);
+            List<Telefone> telefones = pessoa.getTelefones(adm, "tb_administrador",template);
             adm.setTelefone(telefones);
             aux.add(adm);
         }
@@ -93,7 +93,7 @@ public class AdminDaoImpl implements AdminDao{
         List<Administrador> admins = template.query(sql, new AdminRowMapper());
         List<Administrador> aux = new ArrayList();
         for(Administrador adm : admins){
-            List<Telefone> telefones = pessoa.getTelefones(adm, template);
+            List<Telefone> telefones = pessoa.getTelefones(adm, "tb_administrador",template);
             adm.setTelefone(telefones);
             aux.add(adm);
         }

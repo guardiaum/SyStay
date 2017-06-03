@@ -21,12 +21,15 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class PessoaDaoUtil {
     
-    public List<Telefone> getTelefones(Pessoa f, JdbcTemplate template) {
+    public List<Telefone> getTelefones(Pessoa f, String tabela, JdbcTemplate template) {
         List<Telefone> fones = new ArrayList();
         
         String sql = "SELECT f.cod_area||' '||f.numero||'' as fone "
-                + "FROM tb_administrador a, TABLE(a.lista_fones) f "
+                + "FROM "+tabela+" a, TABLE(a.lista_fones) f "
                 + "WHERE a.numerodocumento='"+f.getNumeroDocumento()+"'";
+        
+        System.out.println("com.dbproject.systay.dao.impl.PessoaDaoUtil.getTelefones()");
+        System.out.println(sql);
         List<String> auxFones = template.query(sql, new RowMapper<String>(){
             @Override
             public String mapRow(ResultSet rs, int i) throws SQLException {

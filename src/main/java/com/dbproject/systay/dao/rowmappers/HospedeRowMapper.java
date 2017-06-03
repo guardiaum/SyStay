@@ -5,6 +5,7 @@
  */
 package com.dbproject.systay.dao.rowmappers;
 
+import com.dbproject.systay.beans.Endereco;
 import com.dbproject.systay.beans.Hospede;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,8 +23,10 @@ public class HospedeRowMapper implements RowMapper<Hospede>{
         h.setNumeroDocumento(rs.getString("numerodocumento"));
         h.setNome(rs.getString("nome"));
         h.setData_nascimento(rs.getDate("data_nascimento"));
+        h.setEndereco(new Endereco(rs.getString("rua"), 
+                rs.getInt("numero"), rs.getString("complemento"), rs.getString("bairro"), 
+                rs.getString("cidade"), rs.getString("estado"), rs.getInt("cep")));
         h.setObservacao(rs.getString("observacao"));
         return h;
-    }
-    
+    }    
 }
