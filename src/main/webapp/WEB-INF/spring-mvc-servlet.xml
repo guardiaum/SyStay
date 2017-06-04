@@ -41,6 +41,11 @@
             <property name="template" ref="jt"></property>  
         </bean> 
         
+        <bean id="reservaService" class="com.dbproject.systay.services.impl.ReservaServiceImpl" />
+        <bean id="reservaDao" class="com.dbproject.systay.dao.impl.ReservaDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean>
+        
         <bean id="loginService" class="com.dbproject.systay.services.impl.LoginServiceImpl" /> 
         <bean id="loginDao" class="com.dbproject.systay.dao.impl.LoginDaoImpl">
             <property name="template" ref="jt"></property>  

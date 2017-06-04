@@ -15,11 +15,11 @@
                 </tr>
                 <tr>    
                     <td>Numero Documento: </td>   
-                    <td><form:input path="numeroDocumento"  maxlength="20"/></td>  
+                    <td><form:input  required="true" path="numeroDocumento"  maxlength="20"/></td>  
                 </tr>    
                 <tr>    
                     <td>Nome :</td>    
-                    <td><form:input path="nome" maxlength="25"/></td>  
+                    <td><form:input  required="true" path="nome" maxlength="25"/></td>  
                 </tr>
                 <tr>    
                     <td colspan="2"><h5>Informações de Endereço</h5></td>
