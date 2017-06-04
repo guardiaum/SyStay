@@ -26,7 +26,6 @@ public class ReservaRowMapper implements RowMapper<Reserva>{
         r.setDataEntrada(rs.getDate("dataEntrada"));
         r.setDataSaida(rs.getDate("dataSaida"));
         r.setDataCancelamento(rs.getDate("dataCancelamento"));
-        r.getResponsavelGerencia().getLogin().setUsername(rs.getString("login"));
         return r;
     }   
 }
