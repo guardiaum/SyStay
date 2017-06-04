@@ -40,9 +40,11 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
     @Override
     public int cadastrar(QuartoComum quartocomum) {
         
-            String sql = "INSERT INTO "+QUARTO_COMUM_TABLE+" (id, numero, ramal, valor_diaria, qtd_camas, tipo_camas) "
-            + "VALUES (sq_quarto_comum.nextval,"+quartocomum.getNumero()+", "
-            +quartocomum.getRamal()+", " +quartocomum.getValor_diaria()+", "+quartocomum.getQtd_camas()+", '"+quartocomum.getTipo_camas()+"')";          
+            String sql = "INSERT INTO "+QUARTO_COMUM_TABLE+" (id, numero, observacao,ramal, valor_diaria, qtd_camas, tipo_camas, tem_varanda, area) "
+            + "VALUES (sq_quarto_comum.nextval,"+quartocomum.getNumero()+", '"
+            +quartocomum.getObservacao()+"', " +quartocomum.getRamal()+", " +quartocomum.getValor_diaria()+", "+quartocomum.getQtd_camas()+", "
+                    + "'"+quartocomum.getTipo_camas()+"', '"+quartocomum.getTem_varanda()+"', "+quartocomum.getArea()+")";    
+            System.out.println(sql);
             
 
             return template.update(sql);
@@ -55,14 +57,15 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
         return template.query("select * from " + QUARTO_COMUM_TABLE, new RowMapper<QuartoComum>(){
             public QuartoComum mapRow(ResultSet rs, int row) throws SQLException{
                 QuartoComum q = new QuartoComum();
-                q.setId(rs.getInt(1));
-                q.setNumero(rs.getInt(2));
-                q.setRamal(rs.getString(3));
-                q.setValor_diaria(rs.getFloat(4));
-                q.setQtd_camas(rs.getInt(5));
-                q.setTipo_camas(rs.getString(6));
+                q.setId(rs.getInt("id"));
+                q.setNumero(rs.getInt("numero"));
+                q.setRamal(rs.getString("ramal"));
+                q.setValor_diaria(rs.getFloat("valor_diaria"));
+                q.setQtd_camas(rs.getInt("qtd_camas"));
+                q.setTipo_camas(rs.getString("tipo_camas"));
+                q.setObservacao(rs.getString("observacao"));
+                q.setTem_varanda(rs.getString("tem_varanda").charAt(0));
                 return q;    
-                
             }
         });
     }

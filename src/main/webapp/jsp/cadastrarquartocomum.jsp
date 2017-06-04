@@ -17,28 +17,30 @@
                 </tr>
                 <tr>    
                     <td>Numero do Quarto Comum: </td>                  
-                    
                     <td><form:input path="numero"  /></td>  
-                    <td>Observacao :</td>    
+                    <td>Observacao: </td>    
                     <td><form:input path="observacao" /></td>  
                 </tr>
                 <tr> 
-                    <td>Quantidade de camas :</td>    
+                    <td>Quantidade de camas: </td>    
                     <td><form:input path="qtd_camas" /></td> 
-                    <td>Tipo de camas :</td>    
-                    <td><form:input path="tipo_camas" /></td> 
+                    <td>Tipo de cama :</td>    
+                    <td>
+                        <form:radiobutton path="tipo_camas" value="solteiro"/>Solteiro
+                        <form:radiobutton path="tipo_camas" value="casal"/>Casal  
+                    </td> 
                 </tr>
                
                 <tr>    
                     <td>Tamanho do quarto :</td>    
                     <td><form:input path="area" /></td>  
-                    <td>Tem varanda? :</td>
-                    <td>
-                        <select>
-                        <option value="S">Sim</option>
-                        <option value="N">Nao</option>
-                        </select>
-                    </td>
+                    <tr>
+                        <td>Tem varanda?</td>
+                         <td>
+                             <form:radiobutton path="tem_varanda" value="S"/>Sim
+                             <form:radiobutton path="tem_varanda" value="N"/>Nao  
+                         </td>
+                    </tr>
                 </tr>
                 <tr>    
                     <td colspan="2"><b>Telefone</b></td>
