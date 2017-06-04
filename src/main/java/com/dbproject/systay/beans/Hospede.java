@@ -15,6 +15,15 @@ import java.util.List;
 
 public class Hospede extends Pessoa {
     private String observacao;
+    private Administrador responsavelGerencia;
+
+    public void setResponsavelGerencia(Administrador responsavelGerencia) {
+        this.responsavelGerencia = responsavelGerencia;
+    }
+
+    public Administrador getResponsavelGerencia() {
+        return responsavelGerencia;
+    }
 
     public Hospede() {
     }

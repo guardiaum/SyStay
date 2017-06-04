@@ -74,7 +74,8 @@ public class ReservaDaoImpl implements ReservaDao{
     public List<Reserva> getReservas() { 
         String query = "SELECT A.id as id, A.total_reserva as total_reserva, "+
                 "A.dataCadastro as dataCadastro,A.dataEntrada as dataEntrada, "
-                 + "A.dataSaida as dataSaida, A.dataCancelamento as dataCancelamento, A.observacao "+
+                 + "A.dataSaida as dataSaida, A.responsavelGerencia.login.username as username, "
+                + "A.dataCancelamento as dataCancelamento, A.observacao "+
                 "FROM tb_reserva A";        
         List<Reserva> reservas = template.query(query, new ReservaRowMapper());        
         return reservas;
@@ -85,7 +86,8 @@ public class ReservaDaoImpl implements ReservaDao{
     public Reserva getReservaById(int id) { 
         String query = "SELECT A.id as id, A.total_reserva as total_reserva, "+
                 "A.dataCadastro as dataCadastro,A.dataEntrada as dataEntrada, "
-                 + "A.dataSaida as dataSaida, A.dataCancelamento as dataCancelamento, A.observacao "+
+                 + "A.dataSaida as dataSaida, A.responsavelGerencia.login.username as username,"
+                + " A.dataCancelamento as dataCancelamento, A.observacao "+
                 "FROM tb_reserva A WHERE A.id='"+id+"'";
         
         List<Reserva> reservas = template.query(query, new ReservaRowMapper());

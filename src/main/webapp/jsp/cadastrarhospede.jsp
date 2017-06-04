@@ -90,6 +90,11 @@
                 <tr>    
                     <td>Observação :</td>    
                     <td><form:input path="observacao"  maxlength="15"/></td>  
+                </tr>           
+                <tr>    
+                    <td>Administrador :</td>    
+                    <td><form:input path="responsavelGerencia.login.username"   readonly="true" 
+                        value='<%= session.getAttribute( "theName" ) %>'  maxlength="15"/></td>  
                 </tr>
                 <tr>    
                     <td> </td>    
