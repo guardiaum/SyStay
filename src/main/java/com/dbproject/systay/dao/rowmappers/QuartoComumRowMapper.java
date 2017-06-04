@@ -6,6 +6,7 @@
 package com.dbproject.systay.dao.rowmappers;
 
 import com.dbproject.systay.beans.QuartoComum;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -18,18 +19,23 @@ public class QuartoComumRowMapper implements RowMapper<QuartoComum>{
 
     @Override
     public QuartoComum mapRow(ResultSet rs, int i) throws SQLException {
+                                                                    
         QuartoComum qc = new QuartoComum();
         qc.setId(rs.getInt("id"));
         qc.setNumero(rs.getInt("numero"));
-        qc.setArea(rs.getDouble("area"));
-        //qc.setFotos(rs.)
         qc.setObservacao(rs.getString("observacao"));
-        qc.setQtd_camas(rs.getInt("qt_camas"));
+        
+        //foto
+        qc.setArea(rs.getDouble("area"));
+        qc.setTem_varanda(rs.getString("tem_varanda").charAt(0));
         qc.setRamal(rs.getString("ramal"));
-       // qc.setTem_varanda(Char.rs.getString(""));
-        qc.setTipo_camas(rs.getString("cama"));
         qc.setValor_diaria(rs.getFloat("valor_diaria"));
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //gerente
+        qc.setQtd_camas(rs.getInt("qtd_camas"));      
+        qc.setTipo_camas(rs.getString("tipo_camas"));
+ //       qc.setResponsavelGerencia(responsavelGerencia);
+        
+        return qc;
     }
     
 }

@@ -84,12 +84,12 @@ public class Quarto {
         this.area = area;
     }
 
-    public char isTem_varanda() {
-        return tem_varanda;
-    }
-
     public void setTem_varanda(char tem_varanda) {
         this.tem_varanda = tem_varanda;
+    }
+    
+     public char getTem_varanda() {
+        return this.tem_varanda;
     }
 
     public String getRamal() {

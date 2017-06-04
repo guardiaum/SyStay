@@ -38,15 +38,15 @@ public class QuartoComumController {
     @RequestMapping(value="/salvarquartocomum",method = RequestMethod.POST)  
     public ModelAndView cadastrar(@ModelAttribute("QuartoComum") QuartoComum quartocomum){
         quartoComumService.cadastrar(quartocomum);
-        ModelAndView mv = new ModelAndView("viewquartocomum");
-        mv.addObject("quartocomum", quartocomum);
-        return mv;
+        //ModelAndView mv = new ModelAndView("viewquartocomum");
+        //
+        return new ModelAndView("redirect:/listarquartocomum");
     }
     
-    @RequestMapping("/viewquartocomum")  
-    public ModelAndView viewAdmins(){  
+    @RequestMapping("/listarquartocomum")  
+    public ModelAndView listarquartocomum(){  
         List<QuartoComum> list = quartoComumService.getQuartosComuns();  
-        return new ModelAndView("viewemp","list",list);  
+        return new ModelAndView("listarquartocomum","list",list);  
     }  
     
     @RequestMapping(value="/atualizarquartocomum",method = RequestMethod.POST)  
@@ -62,13 +62,11 @@ public class QuartoComumController {
         return new ModelAndView("redirect:/viewquartocomum"); 
     }  
     
-    protected Map referenceData(HttpServletRequest request) throws Exception {
-	Map referenceData = new HashMap();
-	Map<String,String> tem_varanda = new LinkedHashMap<String,String>();
-	tem_varanda.put("S", "Sim");
-	tem_varanda.put("N", "Nao");
-	referenceData.put("ListaOpcaos", tem_varanda);
-        return tem_varanda;
-}
+    @RequestMapping(value = "/exibirquartocomum/{id}",method = RequestMethod.GET)  
+    public ModelAndView exibirquartocomum(@PathVariable int id) {
+        QuartoComum quartocomum = quartoComumService.getQuartoComum(id);
+        return new ModelAndView("viewquartocomum", "quartocomum", quartocomum);  
+    }
+
     
 }
