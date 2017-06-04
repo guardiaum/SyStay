@@ -56,4 +56,9 @@
             <property name="template" ref="jt"></property>  
         </bean> 
         
+        <bean id="quartoCService" class="com.dbproject.systay.services.impl.QuartoComumServiceImpl" />
+        <bean id="quartoCDao" class="com.dbproject.systay.dao.impl.QuartoComumDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean> 
+        
 </beans>
