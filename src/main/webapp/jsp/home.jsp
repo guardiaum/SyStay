@@ -21,5 +21,7 @@
         <a href="listarhospedes">Hóspede</a><br/>
         <a href="listaradmins">Administradores</a><br/>
         <a href="listarhospedagens">Hospedagem</a><br/>
+        <a href="cadastrararecepcionista">Cadastrar Recepcionista</a><br/>
+        <a href="cadastrarquartocomum">Cadastrar Quarto</a><br/>
     </body>
 </html>
