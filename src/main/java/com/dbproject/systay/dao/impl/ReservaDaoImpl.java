@@ -43,10 +43,16 @@ public class ReservaDaoImpl implements ReservaDao{
         String  dataSaida = dateFormat.format(r.getDataSaida());
         r.setTotal_reserva(800);
 
-        String query="insert into tb_reserva (id, total_reserva, dataCadastro, dataEntrada, dataSaida, observacao, responsavelGerencia) "
+//        String query="insert into tb_reserva (id, total_reserva, dataCadastro, dataEntrada, dataSaida, observacao, responsavelGerencia) "
+//                + "values(sq_reserva.nextval,"+r.getTotal_reserva()+",'"+dataCadastro+"','"+dataEntrada+"','"+dataSaida+"','"
+//                +r.getObservacao()+"', (SELECT REF (A) FROM tb_administrador A WHERE A.login.username = "
+//                + "'"+r.getResponsavelGerencia().getLogin().getUsername()+"'))"; 
+
+        String query="insert into tb_reserva (id, total_reserva, dataCadastro, dataEntrada, dataSaida, observacao, responsavelGerencia, hospede)"
                 + "values(sq_reserva.nextval,"+r.getTotal_reserva()+",'"+dataCadastro+"','"+dataEntrada+"','"+dataSaida+"','"
                 +r.getObservacao()+"', (SELECT REF (A) FROM tb_administrador A WHERE A.login.username = "
-                + "'"+r.getResponsavelGerencia().getLogin().getUsername()+"'))"; 
+                + "'"+r.getResponsavelGerencia().getLogin().getUsername()+"'), (SELECT REF (H) FROM tb_hospede H "
+                + "WHERE H.numeroDocumento = '"+r.getHospede().getNumeroDocumento()+"'))"; 
         System.err.println(query);
         return template.update(query);
     }
@@ -75,6 +81,7 @@ public class ReservaDaoImpl implements ReservaDao{
         String query = "SELECT A.id as id, A.total_reserva as total_reserva, "+
                 "A.dataCadastro as dataCadastro,A.dataEntrada as dataEntrada, "
                  + "A.dataSaida as dataSaida, A.responsavelGerencia.login.username as username, "
+                + "A.hospede.numeroDocumento as numeroDocumento, A.hospede.nome as nome, "
                 + "A.dataCancelamento as dataCancelamento, A.observacao "+
                 "FROM tb_reserva A";        
         List<Reserva> reservas = template.query(query, new ReservaRowMapper());        
@@ -87,9 +94,9 @@ public class ReservaDaoImpl implements ReservaDao{
         String query = "SELECT A.id as id, A.total_reserva as total_reserva, "+
                 "A.dataCadastro as dataCadastro,A.dataEntrada as dataEntrada, "
                  + "A.dataSaida as dataSaida, A.responsavelGerencia.login.username as username,"
+                + "A.hospede.numeroDocumento as numeroDocumento, A.hospede.nome as nome, "
                 + " A.dataCancelamento as dataCancelamento, A.observacao "+
                 "FROM tb_reserva A WHERE A.id='"+id+"'";
-        
         List<Reserva> reservas = template.query(query, new ReservaRowMapper());
         return reservas.get(0);
     }

@@ -22,18 +22,23 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String cpf, String nome, Date data_nascimento) {
-        this.numeroDocumento = cpf;
+    public Pessoa(String numeroDocumento, String nome, Date data_nascimento) {
+        this.numeroDocumento = numeroDocumento;
         this.nome = nome;
         this.data_nascimento = data_nascimento;
     }
 
-    public Pessoa(String cpf, String nome, Endereco endereco, Date data_nascimento, List<Telefone> telefone) {
-        this.numeroDocumento = cpf;
+    public Pessoa(String numeroDocumento, String nome, Endereco endereco, Date data_nascimento, List<Telefone> telefone) {
+        this.numeroDocumento = numeroDocumento;
         this.nome = nome;
         this.endereco = endereco;
         this.data_nascimento = data_nascimento;
         this.telefone = telefone;
+    }
+
+    public Pessoa(String numeroDocumento, String nome) {
+        this.numeroDocumento = numeroDocumento;
+        this.nome = nome;
     }
 
     public String getNumeroDocumento() {

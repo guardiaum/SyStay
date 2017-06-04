@@ -32,6 +32,9 @@ public class Hospede extends Pessoa {
         super(numeroDocumento, nome, endereco, data_nascimento, telefone);
         this.observacao = observacao;
     }
+    public Hospede(String numeroDocumento, String nome) {
+        super(numeroDocumento, nome);
+    }
 
     public String getObservacao() {
         return observacao;
