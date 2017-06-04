@@ -41,6 +41,11 @@
             <property name="template" ref="jt"></property>  
         </bean> 
         
+        <bean id="reservaService" class="com.dbproject.systay.services.impl.ReservaServiceImpl" />
+        <bean id="reservaDao" class="com.dbproject.systay.dao.impl.ReservaDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean>
+        
         <bean id="loginService" class="com.dbproject.systay.services.impl.LoginServiceImpl" /> 
         <bean id="loginDao" class="com.dbproject.systay.dao.impl.LoginDaoImpl">
             <property name="template" ref="jt"></property>  
@@ -51,6 +56,11 @@
             <property name="template" ref="jt"></property>  
         </bean> 
         
+        <bean id="hospedagemService" class="com.dbproject.systay.services.impl.HospedagemServiceImpl" />
+        <bean id="hospedagemDao" class="com.dbproject.systay.dao.impl.HospedagemDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean> 
+            
         <bean id="quartoCService" class="com.dbproject.systay.services.impl.QuartoComumServiceImpl" />
         <bean id="quartoCDao" class="com.dbproject.systay.dao.impl.QuartoComumDaoImpl">
             <property name="template" ref="jt"></property>  

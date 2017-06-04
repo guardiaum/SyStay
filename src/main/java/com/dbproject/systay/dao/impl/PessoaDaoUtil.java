@@ -28,8 +28,6 @@ public class PessoaDaoUtil {
                 + "FROM "+tabela+" a, TABLE(a.lista_fones) f "
                 + "WHERE a.numerodocumento='"+f.getNumeroDocumento()+"'";
         
-        System.out.println("com.dbproject.systay.dao.impl.PessoaDaoUtil.getTelefones()");
-        System.out.println(sql);
         List<String> auxFones = template.query(sql, new RowMapper<String>(){
             @Override
             public String mapRow(ResultSet rs, int i) throws SQLException {

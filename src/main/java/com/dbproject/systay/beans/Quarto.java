@@ -5,6 +5,7 @@
  */
 package com.dbproject.systay.beans;
 
+
 import java.awt.Image;
 
 /**
@@ -115,6 +116,5 @@ public class Quarto {
     public void setResponsavelGerencia(Administrador responsavelGerencia) {
         this.responsavelGerencia = responsavelGerencia;
     }
-    
     
 }

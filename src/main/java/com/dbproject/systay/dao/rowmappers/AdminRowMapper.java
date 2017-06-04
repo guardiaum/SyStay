@@ -8,10 +8,13 @@ package com.dbproject.systay.dao.rowmappers;
 import com.dbproject.systay.beans.Administrador;
 import com.dbproject.systay.beans.Endereco;
 import com.dbproject.systay.beans.Login;
-import com.dbproject.systay.beans.Telefone;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.jdbc.core.RowMapper;
 
 /**
@@ -25,8 +28,13 @@ public class AdminRowMapper implements RowMapper<Administrador>{
         Administrador adm = new Administrador();
         adm.setNumeroDocumento(rs.getString("numerodocumento"));
         adm.setNome(rs.getString("nome"));
-        adm.setData_nascimento(rs.getDate("data_nascimento"));
-        adm.setDataAdmissao(rs.getDate("dataadimissao"));
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date utilDateNasc = new java.util.Date(rs.getDate("data_nascimento").getTime());
+        java.util.Date utilAdmissao = new java.util.Date(rs.getDate("dataAdimissao").getTime());
+        
+        adm.setData_nascimento(utilDateNasc);
+        adm.setDataAdmissao(utilAdmissao);
         adm.setSalario(rs.getDouble("salario"));
         adm.setCargo(rs.getString("cargo"));
         adm.setEndereco(new Endereco(rs.getString("rua"), 

@@ -38,9 +38,10 @@ public class HospedeDaoImpl implements HospedeDao{
     public int save(Hospede h){ 
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");    
-        String  data_nascimento = dateFormat.format(h.getData_nascimento());
-        
-        String query="insert into tb_hospede(numeroDocumento,nome, data_nascimento,lista_fones, endereco, observacao) "
+        String data_nascimento = dateFormat.format(h.getData_nascimento());
+         
+         
+        String query="insert into tb_hospede(numeroDocumento,nome, data_nascimento,lista_fones, endereco, observacao, responsavelGerencia) "
                 + "values('"+h.getNumeroDocumento()+"','"+h.getNome()+"','"+data_nascimento+"', "
                 + "tp_fones(tp_fone('"+h.getTelefone().get(0).getCod_area()+"', '"+h.getTelefone().get(0).getNumero()+"'), "
                 + "tp_fone('"+h.getTelefone().get(1).getCod_area()+"', '"+h.getTelefone().get(1).getNumero()+"'), "
@@ -48,7 +49,8 @@ public class HospedeDaoImpl implements HospedeDao{
                 + "tp_fone('"+h.getTelefone().get(3).getCod_area()+"', '"+h.getTelefone().get(3).getNumero()+"')), "
                 + "tp_endereco('"+h.getEndereco().getRua()+"',"+h.getEndereco().getNumero()+",'"+h.getEndereco().getComplemento()+"',"
                 + "'"+h.getEndereco().getBairro()+"','"+h.getEndereco().getCidade()+"','"+h.getEndereco().getEstado()+"',"
-                + ""+h.getEndereco().getCep()+"),'"+h.getObservacao()+"')"; 
+                + ""+h.getEndereco().getCep()+"),'"+h.getObservacao()+"', (SELECT REF (A) FROM tb_administrador A WHERE A.login.username = "
+                + "'"+h.getResponsavelGerencia().getLogin().getUsername()+"'))"; 
         return template.update(query);  
     }  
     
@@ -77,12 +79,10 @@ public class HospedeDaoImpl implements HospedeDao{
                 "A.endereco.complemento as complemento, A.endereco.bairro as bairro, "+
                 "A.endereco.cidade as cidade, A.endereco.estado as estado, A.endereco.cep as cep, A.observacao "+
                 "FROM tb_hospede A WHERE A.numerodocumento='"+numeroDocumento+"'";
-             
-        System.out.println(query);
+        
         List<Hospede> hospedes = template.query(query, new HospedeRowMapper());
         List<Hospede> aux = new ArrayList();
         for(Hospede h : hospedes){
-            System.out.println("Foooooooooor");
             List<Telefone> telefones = pessoa.getTelefones(h, "tb_hospede",template);
             h.setTelefone(telefones);
             aux.add(h);
