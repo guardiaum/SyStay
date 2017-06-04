@@ -18,6 +18,7 @@ public interface AdminDao {
     Administrador getAdministrador(String numeroDocumento);
     Administrador cadastrar(Administrador administrador);
     List<Administrador> getAdministradores();
+    Administrador getAdministradorById(String numeroDocumento);
     boolean atualizarAdministrador(Administrador administrador);
     boolean deletarAdministrador(String numeroDocumento);
 }

@@ -82,7 +82,6 @@ public class HospedeDaoImpl implements HospedeDao{
         List<Hospede> hospedes = template.query(query, new HospedeRowMapper());
         List<Hospede> aux = new ArrayList();
         for(Hospede h : hospedes){
-            System.out.println("Foooooooooor");
             List<Telefone> telefones = pessoa.getTelefones(h, "tb_hospede",template);
             h.setTelefone(telefones);
             aux.add(h);

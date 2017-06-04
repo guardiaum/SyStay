@@ -19,7 +19,7 @@
         <h1>SyStay</h1>
  
         <a href="listarhospedes">Hóspede</a><br/>
-        <a href="cadastraradmin">Cadastrar Administrador</a><br/>
-        <a href="cadastrararecepcionista">Cadastrar Recepcionista</a><br/>
+        <a href="listaradmins">Administradores</a><br/>
+        <a href="listarhospedagens">Hospedagem</a><br/>
     </body>
 </html>

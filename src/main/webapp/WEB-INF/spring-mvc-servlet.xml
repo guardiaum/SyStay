@@ -51,4 +51,9 @@
             <property name="template" ref="jt"></property>  
         </bean> 
         
+        <bean id="hospedagemService" class="com.dbproject.systay.services.impl.HospedagemServiceImpl" />
+        <bean id="hospedagemDao" class="com.dbproject.systay.dao.impl.HospedagemDaoImpl">
+            <property name="template" ref="jt"></property>  
+        </bean> 
+        
 </beans>
