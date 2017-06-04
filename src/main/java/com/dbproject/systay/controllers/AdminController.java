@@ -6,6 +6,7 @@
 package com.dbproject.systay.controllers;
 
 import com.dbproject.systay.beans.Administrador;
+import com.dbproject.systay.beans.Hospede;
 import com.dbproject.systay.services.interfaces.AdminService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,23 +40,35 @@ public class AdminController {
     }  
     
     /* It provides list of employees in model object */  
-    @RequestMapping("/viewadmins")  
+    @RequestMapping(value="/listaradmins",method = RequestMethod.GET)
     public ModelAndView viewAdmins(){  
         List<Administrador> list = adminService.getAdministradores();  
-        return new ModelAndView("viewemp","list",list);  
+        return new ModelAndView("listaradmins","list",list);  
+    }  
+    
+    @RequestMapping(value="/editaradmin/{numeroDocumento}")  
+    public ModelAndView editaradmin(@PathVariable String numeroDocumento){  
+        Administrador admin =adminService.getAdministradorById(numeroDocumento);  
+        return new ModelAndView("editaradmin","command", admin);  
     }  
     
     /* It updates model object. */ 
-    @RequestMapping(value="/atualizar",method = RequestMethod.POST)  
-    public ModelAndView editsave(@ModelAttribute("Administrador") Administrador administrador){  
+    @RequestMapping(value="/editsaveadmin", method = RequestMethod.POST)  
+    public ModelAndView atualizarAdmin(@ModelAttribute("administrador") Administrador administrador){  
         adminService.atualizarAdministrador(administrador);  
-        return new ModelAndView("redirect:/viewhospede");  
+        return new ModelAndView("redirect:/listaradmins");  
     }
     
     /* It deletes record for the given id in URL and redirects to /viewemp */  
     @RequestMapping(value="/deletaradmin/{numeroDocumento}",method = RequestMethod.GET)  
     public ModelAndView delete(@PathVariable String numeroDocumento){
         adminService.deletarAdministrador(numeroDocumento);  
-        return new ModelAndView("redirect:/viewhospede"); 
+        return new ModelAndView("redirect:/listaradmins"); 
     }  
+    
+    @RequestMapping(value = "/exibiradmin/{numeroDocumento}",method = RequestMethod.GET)  
+    public ModelAndView exibirhospede(@PathVariable String numeroDocumento) {
+        Administrador adm = adminService.getAdministradorById(numeroDocumento);
+        return new ModelAndView("viewadmin", "admin", adm);  
+    }
 }

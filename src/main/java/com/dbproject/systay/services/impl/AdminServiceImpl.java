@@ -44,6 +44,11 @@ public class AdminServiceImpl implements AdminService{
     public boolean deletarAdministrador(String numeroDocumento) {
         return adminDao.deletarAdministrador(numeroDocumento);
     }
+
+    @Override
+    public Administrador getAdministradorById(String numeroDocumento) {
+        return adminDao.getAdministradorById(numeroDocumento);
+    }
     
     
     

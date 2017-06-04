@@ -42,7 +42,5 @@
         Username: ${admin.login.username}<br/>
         Senha: *****<br/><br/><br/>
         
-        <a href="#">Remover</a>
-        <a href="#">Atualizar</a>
     </body>
 </html>

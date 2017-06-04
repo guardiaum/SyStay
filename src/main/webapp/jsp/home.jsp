@@ -19,6 +19,8 @@
         <h1>SyStay</h1>
         <a href="listarhospedes">Hóspede</a><br/>
         <a href="listarreservas">Reserva</a><br/>
+        <a href="listaradmins">Administradores</a><br/>
+        <a href="listarhospedagens">Hospedagem</a><br/>
         <a href="cadastrarquartocomum">Cadastrar Quarto</a><br/>
     </body>
 </html>

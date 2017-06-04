@@ -17,6 +17,7 @@ public interface AdminService {
     Administrador getAdministrador(String numeroDocumento);
     Administrador cadastrar(Administrador administrador);
     List<Administrador> getAdministradores();
+    Administrador getAdministradorById(String numeroDocumento);
     boolean atualizarAdministrador(Administrador admin);
     boolean deletarAdministrador(String numeroDocumento);
 }

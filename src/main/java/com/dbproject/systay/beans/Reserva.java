@@ -5,6 +5,7 @@
  */
 package com.dbproject.systay.beans;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -118,6 +119,5 @@ public class Reserva {
     public void setQuarto(List<Quarto> quarto) {
         this.quarto = quarto;
     }
-    
     
 }
