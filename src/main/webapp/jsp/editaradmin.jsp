@@ -8,7 +8,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<h1>Editar Hóspede</h1>  
+<a href="../home">Home</a>
+<h1>Editar Administrador</h1>  
 <fmt:formatDate type="date" var="theFormattedNasc" value="${data_nascimento}" pattern="dd/MM/yyyy" />
 <form:form method="post" action="/SyStay/editsaveadmin">    
     <table >      

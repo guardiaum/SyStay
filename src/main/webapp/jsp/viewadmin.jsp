@@ -15,7 +15,7 @@
         <title>SyStay - Administrador</title>
     </head>
     <body>
-        <a href="home">Home</a>
+        <a href="../home">Home</a>
         <h1>SyStay</h1>
         <h3>${admin.nome}</h3>
         Número do Documento: ${admin.numeroDocumento}<br/>
