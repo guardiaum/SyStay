@@ -17,13 +17,13 @@
                 </tr>
                 <tr>    
                     <td>Numero do Quarto Comum: </td>                  
-                    <td><form:input path="numero"  /></td>  
-                    <td>Observacao: </td>    
-                    <td><form:input path="observacao" /></td>  
+                    <td><form:input path="numero"  /></td>   
                 </tr>
                 <tr> 
                     <td>Quantidade de camas: </td>    
                     <td><form:input path="qtd_camas" /></td> 
+                </tr>
+                <tr>
                     <td>Tipo de cama :</td>    
                     <td>
                         <form:radiobutton path="tipo_camas" value="solteiro"/>Solteiro
@@ -43,18 +43,16 @@
                     </tr>
                 </tr>
                 <tr>    
-                    <td colspan="2"><b>Telefone</b></td>
-                </tr>
-                <tr>
-                    <td>Ramal</td>
-                     <td><form:input path="ramal"  /></td> 
+                    <td colspan="2">Telefone - Ramal</td>             
+                    <td><form:input path="ramal"  /></td> 
                 </tr>
                 <tr>    
-                    <td colspan="2"><b>Valor da diaria</b></td>
+                    <td colspan="2">Valor da diaria</td>
+                    <td><form:input path="valor_diaria"  /></td> 
                 </tr>
                 <tr>
-                    <td>Preco</td>
-                    <td><form:input path="valor_diaria"  /></td> 
+                    <td>Observacao: </td>    
+                    <td><form:input path="observacao" /></td> 
                 </tr>
 <!--                <tr>    
                     <td>Administrador: </td>    

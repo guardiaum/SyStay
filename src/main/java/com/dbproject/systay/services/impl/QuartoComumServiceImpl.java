@@ -36,8 +36,8 @@ public class QuartoComumServiceImpl implements QuartoComumService{
     }
 
     @Override
-    public void atualizarQuartoComum(QuartoComum quartocomum) {
-        quartoComumDao.atualizarQuartoComum(quartocomum);
+    public boolean atualizarQuartoComum(QuartoComum quartocomum) {
+        return quartoComumDao.atualizarQuartoComum(quartocomum);
     }
 
     @Override

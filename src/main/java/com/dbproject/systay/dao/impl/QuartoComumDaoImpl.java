@@ -10,6 +10,7 @@ import com.dbproject.systay.beans.Login;
 import com.dbproject.systay.beans.QuartoComum;
 import com.dbproject.systay.dao.interfaces.QuartoComumDao;
 import com.dbproject.systay.dao.rowmappers.AdminRowMapper;
+import com.dbproject.systay.dao.rowmappers.QuartoComumRowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,8 +36,10 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
 
     @Override
     public QuartoComum getQuartoComum(int id) {
-        String sql="select * from "+QUARTO_COMUM_TABLE+ " where id=?";
-        return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<QuartoComum>(QuartoComum.class));
+        String sql="select * from "+QUARTO_COMUM_TABLE+ " where id="+id;
+         List<QuartoComum> quartos = template.query(sql, new QuartoComumRowMapper());
+         System.out.println("ID: "+ quartos.get(0).getId());
+        return quartos.get(0);
     }
 
     @Override
@@ -77,10 +80,9 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
     }
 
     @Override
-    public void atualizarQuartoComum(QuartoComum q) {
-        //numero, ramal, valor_diaria, qtd_camas, tipo_camas
-       String sql = "update " + QUARTO_COMUM_TABLE + " set numero="+q.getNumero()+", ramal="+q.getRamal()+", valor_diaria="+q.getValor_diaria()+", qtd_camas="+q.getQtd_camas()+", tipo_camas="+q.getTipo_camas()+"" ;
-       template.update(sql);
+    public boolean atualizarQuartoComum(QuartoComum q) {
+       String sql = "update " + QUARTO_COMUM_TABLE + " set numero="+q.getNumero()+", area="+q.getArea()+", ramal="+q.getRamal()+", valor_diaria="+q.getValor_diaria()+", observacao='"+q.getObservacao()+"', qtd_camas="+q.getQtd_camas()+", tem_varanda='"+q.getTem_varanda()+"', tipo_camas='"+q.getTipo_camas()+"' where id= "+q.getId() ;
+       return template.update(sql)!= 0;
     }
 
    @Override

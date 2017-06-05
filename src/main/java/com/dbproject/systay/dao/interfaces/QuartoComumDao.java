@@ -17,7 +17,7 @@ public interface QuartoComumDao {
     QuartoComum getQuartoComum(int id);
     int cadastrar(QuartoComum quartocomum);
     List<QuartoComum> getQuartoComuns();
-    void atualizarQuartoComum(QuartoComum quartocomum);
+    boolean atualizarQuartoComum(QuartoComum quartocomum);
     int deletarQuartoComum(int id);
     
 }
