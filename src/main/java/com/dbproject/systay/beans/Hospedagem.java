@@ -12,7 +12,7 @@ import java.util.Date;
  * @author johny
  */
 public class Hospedagem {
-    private long id;
+    private int id;
     private double resto_reserva;
     private Date dataCheckin;
     private Date dataCheckout;
@@ -22,7 +22,7 @@ public class Hospedagem {
     public Hospedagem() {
     }
 
-    public Hospedagem(long id, double resto_reserva, Date dataCheckin, Date dataCheckout, Administrador responsavel, Reserva reserva) {
+    public Hospedagem(int id, double resto_reserva, Date dataCheckin, Date dataCheckout, Administrador responsavel, Reserva reserva) {
         this.id = id;
         this.resto_reserva = resto_reserva;
         this.dataCheckin = dataCheckin;
@@ -31,11 +31,11 @@ public class Hospedagem {
         this.reserva = reserva;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -8,8 +8,11 @@ package com.dbproject.systay.controllers;
 import com.dbproject.systay.beans.Administrador;
 import com.dbproject.systay.beans.Hospedagem;
 import com.dbproject.systay.beans.Hospede;
+import com.dbproject.systay.beans.Reserva;
+import com.dbproject.systay.services.interfaces.AdminService;
 import com.dbproject.systay.services.interfaces.HospedagemService;
 import com.dbproject.systay.services.interfaces.HospedeService;
+import com.dbproject.systay.services.interfaces.ReservaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,18 +32,25 @@ public class HospedagemController {
     @Autowired
     public HospedagemService hospedagemService;
     @Autowired
-    public HospedeService hospedeService;
+    public ReservaService reservaService;
+    @Autowired
+    public AdminService adminService;
     
     @RequestMapping(value="/cadastrarhospedagem", method = RequestMethod.GET)  
     public ModelAndView showformHospedagem(){
         ModelAndView model = new ModelAndView("cadastrarhospedagem");
-        //model.addObject("reserva",new Reserva());
+        List<Reserva> res = reservaService.getReservas();
+        model.addObject("reserva", res);
         model.addObject("command",new Hospedagem());
         return model;
     }
     
     @RequestMapping(value="/salvarhospedagem",method = RequestMethod.POST)  
     public ModelAndView cadastrarHospedagem(@ModelAttribute("Hospedagem") Hospedagem hospedagem){
+        Administrador adm = adminService.getAdministradorByUsername(hospedagem.getResponsavel().getLogin().getUsername());
+        hospedagem.setResponsavel(adm);
+        Reserva rev = reservaService.getReservaById(hospedagem.getReserva().getId());
+        hospedagem.setReserva(rev);
         hospedagem = hospedagemService.cadastrarHospedagem(hospedagem);
         ModelAndView mv = new ModelAndView("viewadmin");
         mv.addObject("hospedagem", hospedagem);

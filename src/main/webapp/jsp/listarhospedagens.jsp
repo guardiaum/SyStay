@@ -17,8 +17,8 @@
    <c:forEach var="hos" items="${list}">   
         <tr>  
             <td>${hos.id}</td>  
-            <td>${hos.checkin}</td>
-            <td>${hos.checkout}</td>
+            <td>${hos.dataCheckin}</td>
+            <td>${hos.dataCheckout}</td>
             <td><a href="exibirhospedagem/${hos.id}">Detalhes</a></td>
             <td><a href="editarhospedagem/${hos.id}">Editar</a></td>  
             <td><a href="deletarhospedagem/${hos.id}">Excluir</a></td>  
