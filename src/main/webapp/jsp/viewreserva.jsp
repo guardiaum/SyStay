@@ -20,6 +20,7 @@
         <h1>SyStay - Dados da Reserva</h1>
         <h3>Identificador da reserva: ${reserva.id}</h3>
         <h3>Hospede: ${reserva.hospede.nome} -  ${reserva.hospede.numeroDocumento}</h3>
+        Total da reserva: ${reserva.total_reserva}<br/>
         Data que a reserva foi feita: ${reserva.dataCadastro}<br/>
         Data de Entrada: ${reserva.dataEntrada}<br/>
         Data de Saída: ${reserva.dataSaida}<br/>

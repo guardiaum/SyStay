@@ -38,8 +38,6 @@ public class QuartoComumController {
     @RequestMapping(value="/salvarquartocomum",method = RequestMethod.POST)  
     public ModelAndView cadastrar(@ModelAttribute("QuartoComum") QuartoComum quartocomum){
         quartoComumService.cadastrar(quartocomum);
-        //ModelAndView mv = new ModelAndView("viewquartocomum");
-        //
         return new ModelAndView("redirect:/listarquartocomum");
     }
     
@@ -49,17 +47,23 @@ public class QuartoComumController {
         return new ModelAndView("listarquartocomum","list",list);  
     }  
     
-    @RequestMapping(value="/atualizarquartocomum",method = RequestMethod.POST)  
-    public ModelAndView editsave(@ModelAttribute("QuartoComum") QuartoComum quartocomum){  
-        quartoComumService.atualizarQuartoComum(quartocomum);  
-        return new ModelAndView("redirect:/viewquartocomum");  
+    @RequestMapping(value="/editarquartocomum/{id}")  
+    public ModelAndView editarquartocomum(@PathVariable int id){
+        QuartoComum qc = quartoComumService.getQuartoComum(id);
+        return new ModelAndView("editarquartocomum","command",qc);  
     }
 
+     /* It updates model object. */ 
+    @RequestMapping(value="/editsavequartocomum",method = RequestMethod.POST)  
+    public ModelAndView editsavequartocomum(@ModelAttribute(value="quartocomum") QuartoComum quartocomum){ 
+        quartoComumService.atualizarQuartoComum(quartocomum);
+        return new ModelAndView("redirect:/listarquartocomum");  
+    }
     
     @RequestMapping(value="/deletarquartocomum/{id}",method = RequestMethod.GET)  
     public ModelAndView delete(@PathVariable int id){
         quartoComumService.deletarQuartoComum(id);  
-        return new ModelAndView("redirect:/viewquartocomum"); 
+        return new ModelAndView("redirect:/listarquartocomum"); 
     }  
     
     @RequestMapping(value = "/exibirquartocomum/{id}",method = RequestMethod.GET)  

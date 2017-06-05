@@ -11,8 +11,8 @@
     
        <h1>Cadastrar Reserva</h1>  
        <form:form method="post" action="salvarreserva">    
-            <table >     
-                <tr>    
+            <table>     
+                <tr>
                     <td colspan="2"><h4>Dados da Reserva</h4></td>
                 </tr>
                 <tr>    
@@ -30,9 +30,20 @@
                 <tr>    
                     <td>Número de Documento do Hóspede :</td>    
                     <td><form:input path="hospede.numeroDocumento" maxlength="15"/></td>  
+                </tr>
+                <tr>    
+                    <td colspan="2"><b>Identificador dos quartos a serem reservados</b></td>
+                </tr>
+                <tr>    
+                    <td><form:input path="quarto[0].id" maxlength="2" /></td>
+                    <td><form:input path="quarto[1].id" maxlength="2" /></td>>
+                </tr>           
+                <tr>    
+                    <td>Valor da reserva :</td>    
+                    <td><form:input path="total_reserva" maxlength="15"/></td>  
                 </tr>            
                 <tr>    
-                    <td>Administrador :</td>    
+                    <td><b>Administrador :</b></td>    
                     <td><form:input path="responsavelGerencia.login.username"   readonly="true" 
                         value='<%= session.getAttribute( "theName" ) %>'  maxlength="15"/></td>  
                 </tr>
@@ -40,5 +51,5 @@
                     <td> </td>    
                     <td><input type="submit" value="Cadastrar" /></td>    
                 </tr>    
-            </table>   
-       </form:form>    
+            </table>
+       </form:form>                

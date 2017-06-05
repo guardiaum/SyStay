@@ -5,6 +5,7 @@
  */
 package com.dbproject.systay.dao.rowmappers;
 
+import com.dbproject.systay.beans.Administrador;
 import com.dbproject.systay.beans.QuartoComum;
 import java.awt.Image;
 import java.sql.ResultSet;
@@ -33,7 +34,9 @@ public class QuartoComumRowMapper implements RowMapper<QuartoComum>{
         //gerente
         qc.setQtd_camas(rs.getInt("qtd_camas"));      
         qc.setTipo_camas(rs.getString("tipo_camas"));
- //       qc.setResponsavelGerencia(responsavelGerencia);
+//        Administrador adm = new Administrador();
+//        //adm.setNumeroDocumento(rs.getString("responsavel_doc"));
+//        qc.setResponsavelGerencia(adm);
         
         return qc;
     }

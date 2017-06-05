@@ -5,9 +5,12 @@
  */
 package com.dbproject.systay.dao.impl;
 
+import com.dbproject.systay.beans.Administrador;
+import com.dbproject.systay.beans.Login;
 import com.dbproject.systay.beans.QuartoComum;
 import com.dbproject.systay.dao.interfaces.QuartoComumDao;
 import com.dbproject.systay.dao.rowmappers.AdminRowMapper;
+import com.dbproject.systay.dao.rowmappers.QuartoComumRowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -33,8 +36,10 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
 
     @Override
     public QuartoComum getQuartoComum(int id) {
-        String sql="select * from "+QUARTO_COMUM_TABLE+ " where id=?";
-        return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<QuartoComum>(QuartoComum.class));
+        String sql="select * from "+QUARTO_COMUM_TABLE+ " where id="+id;
+         List<QuartoComum> quartos = template.query(sql, new QuartoComumRowMapper());
+         System.out.println("ID: "+ quartos.get(0).getId());
+        return quartos.get(0);
     }
 
     @Override
@@ -43,10 +48,8 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
             String sql = "INSERT INTO "+QUARTO_COMUM_TABLE+" (id, numero, observacao,ramal, valor_diaria, qtd_camas, tipo_camas, tem_varanda, area) "
             + "VALUES (sq_quarto_comum.nextval,"+quartocomum.getNumero()+", '"
             +quartocomum.getObservacao()+"', " +quartocomum.getRamal()+", " +quartocomum.getValor_diaria()+", "+quartocomum.getQtd_camas()+", "
-                    + "'"+quartocomum.getTipo_camas()+"', '"+quartocomum.getTem_varanda()+"', "+quartocomum.getArea()+")";    
+                    + "'"+quartocomum.getTipo_camas()+"', '"+quartocomum.getTem_varanda()+"', "+quartocomum.getArea()+")"; ;    
             System.out.println(sql);
-            
-
             return template.update(sql);
         }
         
@@ -65,16 +68,19 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
                 q.setTipo_camas(rs.getString("tipo_camas"));
                 q.setObservacao(rs.getString("observacao"));
                 q.setTem_varanda(rs.getString("tem_varanda").charAt(0));
+                q.setArea(rs.getDouble("area"));
+//                Administrador adm = new Administrador();
+//                //adm.setNumeroDocumento(rs.getString("responsavel_doc"));
+//                q.setResponsavelGerencia(adm);
                 return q;    
             }
         });
     }
 
     @Override
-    public void atualizarQuartoComum(QuartoComum q) {
-        //numero, ramal, valor_diaria, qtd_camas, tipo_camas
-       String sql = "update " + QUARTO_COMUM_TABLE + " set numero="+q.getNumero()+", ramal="+q.getRamal()+", valor_diaria="+q.getValor_diaria()+", qtd_camas="+q.getQtd_camas()+", tipo_camas="+q.getTipo_camas()+"" ;
-       template.update(sql);
+    public boolean atualizarQuartoComum(QuartoComum q) {
+       String sql = "update " + QUARTO_COMUM_TABLE + " set numero="+q.getNumero()+", area="+q.getArea()+", ramal="+q.getRamal()+", valor_diaria="+q.getValor_diaria()+", observacao='"+q.getObservacao()+"', qtd_camas="+q.getQtd_camas()+", tem_varanda='"+q.getTem_varanda()+"', tipo_camas='"+q.getTipo_camas()+"' where id= "+q.getId() ;
+       return template.update(sql)!= 0;
     }
 
    @Override

@@ -17,7 +17,7 @@ public interface QuartoComumService {
     QuartoComum getQuartoComum(int id);
     int cadastrar(QuartoComum quartocomum);
     List<QuartoComum> getQuartosComuns();
-    void atualizarQuartoComum(QuartoComum quartocomum);
+    boolean atualizarQuartoComum(QuartoComum quartocomum);
     int deletarQuartoComum(int id);
 
    // public void deletarQuartoComum(String id);
