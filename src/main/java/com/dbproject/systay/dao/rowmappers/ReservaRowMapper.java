@@ -5,6 +5,7 @@
  */
 package com.dbproject.systay.dao.rowmappers;
 
+import com.dbproject.systay.beans.Hospede;
 import com.dbproject.systay.beans.Reserva;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +27,7 @@ public class ReservaRowMapper implements RowMapper<Reserva>{
         r.setDataEntrada(rs.getDate("dataEntrada"));
         r.setDataSaida(rs.getDate("dataSaida"));
         r.setDataCancelamento(rs.getDate("dataCancelamento"));
+        r.setHospede(new Hospede(rs.getString("numeroDocumento"), rs.getString("nome")));
         return r;
     }   
 }

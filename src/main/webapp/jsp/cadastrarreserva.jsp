@@ -26,6 +26,10 @@
                 <tr>    
                     <td>Observação :</td>    
                     <td><form:input path="observacao"  maxlength="15"/></td>  
+                </tr>           
+                <tr>    
+                    <td>Número de Documento do Hóspede :</td>    
+                    <td><form:input path="hospede.numeroDocumento" maxlength="15"/></td>  
                 </tr>            
                 <tr>    
                     <td>Administrador :</td>    
