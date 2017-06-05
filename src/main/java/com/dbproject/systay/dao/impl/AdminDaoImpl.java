@@ -118,12 +118,13 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public boolean atualizarAdministrador(Administrador a) {
-        String query = "update tb_hospede H set H.numeroDocumento='" + a.getNumeroDocumento() + "', "
+        String query = "update tb_administrador H set H.numeroDocumento='" + a.getNumeroDocumento() + "', "
                 + "H.nome='" + a.getNome() + "', H.endereco.rua='" + a.getEndereco().getRua() + "',"
+                + "H.salario="+a.getSalario()+", H.cargo='"+a.getCargo()+"', "
                 + "H.endereco.numero=" + a.getEndereco().getNumero() + ", H.endereco.complemento='" + a.getEndereco().getComplemento() + "',"
                 + "H.endereco.bairro='" + a.getEndereco().getBairro() + "',H.endereco.cidade='" + a.getEndereco().getCidade() + "',"
-                + "H.endereco.estado='" + a.getEndereco().getEstado() + "', H.endereco.cep=" + a.getEndereco().getCep() + ","
-                + "H.observacao='" + a.getCargo() + "'where numeroDocumento='" + a.getNumeroDocumento() + "'";
+                + "H.endereco.estado='" + a.getEndereco().getEstado() + "', H.endereco.cep=" + a.getEndereco().getCep() + ""
+                + " where numeroDocumento='" + a.getNumeroDocumento() + "'";
         return template.update(query) != 0;
     }
 
@@ -131,6 +132,26 @@ public class AdminDaoImpl implements AdminDao {
     public boolean deletarAdministrador(String numeroDocumento) {
         String query = "delete from tb_administrador where numeroDocumento='" + numeroDocumento + "'";
         return template.update(query) != 0;
+    }
+
+    @Override
+    public Administrador getAdminByUsername(String username) {
+        String query = "SELECT A.login.username as username, "
+                + "A.login.senha as senha, A.nome as nome, A.numerodocumento as numerodocumento, "
+                + "A.data_nascimento as data_nascimento, A.dataadimissao as dataadimissao, "
+                + "A.salario as salario, A.cargo as cargo, A.endereco.rua as rua, A.endereco.numero as numero, "
+                + "A.endereco.complemento as complemento, A.endereco.bairro as bairro, "
+                + "A.endereco.cidade as cidade, A.endereco.estado as estado, A.endereco.cep as cep "
+                + "FROM tb_administrador A WHERE A.login.username='" + username + "'";
+        
+        List<Administrador> admins = template.query(query, new AdminRowMapper());
+        List<Administrador> aux = new ArrayList();
+        for (Administrador a : admins) {
+            List<Telefone> telefones = pessoa.getTelefones(a, "tb_administrador", template);
+            a.setTelefone(telefones);
+            aux.add(a);
+        }
+        return admins.size() > 0 ? aux.get(0) : admins.get(0);
     }
 
 }

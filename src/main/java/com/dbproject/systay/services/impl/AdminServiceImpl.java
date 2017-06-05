@@ -49,6 +49,11 @@ public class AdminServiceImpl implements AdminService{
     public Administrador getAdministradorById(String numeroDocumento) {
         return adminDao.getAdministradorById(numeroDocumento);
     }
+
+    @Override
+    public Administrador getAdministradorByUsername(String username) {
+        return adminDao.getAdminByUsername(username);
+    }
     
     
     

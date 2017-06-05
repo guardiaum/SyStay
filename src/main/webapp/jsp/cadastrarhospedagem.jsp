@@ -26,32 +26,39 @@
     <body>
         <a href="home">Home</a>
         <h1>Cadastrar Hospedagem</h1>
-        <form:form method="post" action="salvarhospedagem">    
+        <form:form method="post" action="salvarhospedagem">  
+            <form:input path="id" value="" hidden="hidden"></form:input>
             <table >
                 <tr>    
                     <td>Reserva: </td>   
-                    <td> </td>  
+                    <td>
+                        <select name="reserva.id">  
+                            <c:forEach var="res" items="${reserva}">  
+                                <option value="${res.id}">${res.hospede.nome}</option>  
+                            </c:forEach>  
+                        </select>
+                    </td>  
+                </tr>
+                <tr>
+                    <td>Data checkin: </td> 
+                    <td>
+                        <select name="reserva.dataCheckin">  
+                            <c:forEach var="res" items="${reserva}">  
+                                <option value="${res.dataEntrada}">${res.hospede.nome} - ${res.dataEntrada}</option>  
+                            </c:forEach>  
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>Responsável: </td>
-                    <td><form:label path="responsavel.login.username">${theName}</form:label></td>
+                    <td><form:input path="responsavel.login.username" readonly="true" value="${theName}"></form:input></td>
                     </tr>
                     <tr>
-                        <td>Data Checkin: </td>
-                    <%Date dNow = new Date();
-                         SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");%>
-                         <td><form:label path="dataCheckin"> <%= ft.format(new java.util.Date()) %> </form:label></td>
-                </tr>
-                <tr>
-                    <td>Data Checkout: </td>
-                    <!--<td><label path="dataCheckout"><label></td>-->
-                </tr>
-                <tr>
-                    <td>Resta: </td>
-                    <td>R$ </td>
-                </tr>
-                <tr><td><input type="submit" value="Checkin" /></td></tr>
-            </table>
+                        <td>Resta: </td>
+                        <td><form:input path="resto_reserva" value=""></form:input> </td>
+                    </tr>
+                    <tr><td><input type="submit" value="Checkin" /></td></tr>
+                </table>
         </form:form>    
     </body>
 </html>

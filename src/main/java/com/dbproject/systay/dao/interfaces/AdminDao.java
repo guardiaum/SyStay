@@ -21,4 +21,5 @@ public interface AdminDao {
     Administrador getAdministradorById(String numeroDocumento);
     boolean atualizarAdministrador(Administrador administrador);
     boolean deletarAdministrador(String numeroDocumento);
+    Administrador getAdminByUsername(String username);
 }
