@@ -22,6 +22,6 @@
         <a href="listaradmins">Administradores</a><br/>
         <a href="listarhospedagens">Hospedagem</a><br/>
         <a href="listarquartocomum">Quarto Comum</a><br/>
-        <a href="listarquartofamilia">Quarto Familia</a><br/>
+         <a href="listarquartofamilia">Quarto Familia</a><br/>
     </body>
 </html>

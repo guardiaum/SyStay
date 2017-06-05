@@ -65,9 +65,8 @@
         <bean id="quartoCDao" class="com.dbproject.systay.dao.impl.QuartoComumDaoImpl">
             <property name="template" ref="jt"></property>  
         </bean> 
-        <bean id="quartoFService" class="com.dbproject.systay.services.impl.QuartoFamiliaServiceImpl" />
         <bean id="quartoFDao" class="com.dbproject.systay.dao.impl.QuartoFamiliaDaoImpl">
             <property name="template" ref="jt"></property>  
         </bean> 
-        
+        <bean id="quartoFService" class="com.dbproject.systay.services.impl.QuartoFamiliaServiceImpl" />
 </beans>

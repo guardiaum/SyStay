@@ -26,7 +26,7 @@
                 <tr>
                     <td>Tipo de cama :</td>    
                     <td>
-                        <form:radiobutton path="tipo_camas" value="solteiro"/>Solteiro
+                        <form:radiobutton path="tipo_camas" value="solteiro" checked="checked"/>Solteiro
                         <form:radiobutton path="tipo_camas" value="casal"/>Casal  
                     </td> 
                 </tr>
@@ -37,7 +37,7 @@
                     <tr>
                         <td>Tem varanda?</td>
                          <td>
-                             <form:radiobutton path="tem_varanda" value="S"/>Sim
+                             <form:radiobutton path="tem_varanda" value="S" checked="checked"/>Sim
                              <form:radiobutton path="tem_varanda" value="N"/>Nao  
                          </td>
                     </tr>

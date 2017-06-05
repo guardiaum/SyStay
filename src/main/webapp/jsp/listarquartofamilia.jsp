@@ -4,8 +4,8 @@
     Author     : araujomarianna
 --%>
 
-%@page import="com.dbproject.systay.beans.Quarto"%>
-<%@page import="com.dbproject.systay.beans.QuartoComum"%>
+<%@page import="com.dbproject.systay.beans.QuartoFamilia"%>
+<%@page import="com.dbproject.systay.beans.Quarto"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
@@ -29,8 +29,8 @@
             <td>${quartofamilia.responsavelGerencia}</td>
             <td>${quartofamilia.tem_varanda}</td>
                 
-            <td><a href="editarquartocomum/${quartocomum.id}">Editar</a></td>  
-            <td><a href="deletarquartocomum/${quartocomum.id}">Excluir</a></td> 
+            <td><a href="editarquartofamilia/${quartofamilia.id}">Editar</a></td>  
+            <td><a href="deletarquartofamilia/${quartofamilia.id}">Excluir</a></td> 
                 
         </tr>  
        </c:forEach>  

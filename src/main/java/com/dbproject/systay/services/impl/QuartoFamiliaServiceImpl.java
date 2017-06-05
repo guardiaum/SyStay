@@ -11,7 +11,6 @@ import com.dbproject.systay.services.interfaces.QuartoFamiliaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 public class QuartoFamiliaServiceImpl implements QuartoFamiliaService {
     
     @Autowired

@@ -9,6 +9,7 @@ import com.dbproject.systay.beans.QuartoFamilia;
 import com.dbproject.systay.services.interfaces.QuartoFamiliaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author araujomarianna
  */
-public class QuartoFamiliaController {
+@Controller
+public class QuartoFamiliaController{
     
     @Autowired
     public QuartoFamiliaService quartoFamiliaService;
@@ -36,7 +38,7 @@ public class QuartoFamiliaController {
     }
     
     @RequestMapping("/listarquartofamilia")  
-    public ModelAndView listarquartofamilia(){  
+    public ModelAndView listarquartofamilia(){
         List<QuartoFamilia> list = quartoFamiliaService.getQuartosFamilia();  
         return new ModelAndView("listarquartofamilia","list",list);  
     }  

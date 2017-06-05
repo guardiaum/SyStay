@@ -28,7 +28,7 @@
                     <tr>
                         <td>Tem varanda?</td>
                          <td>
-                             <form:radiobutton path="tem_varanda" value="S"/>Sim
+                             <form:radiobutton path="tem_varanda" value="S" checked="checked"/>Sim
                              <form:radiobutton path="tem_varanda" value="N"/>Nao  
                          </td>
                     </tr>
