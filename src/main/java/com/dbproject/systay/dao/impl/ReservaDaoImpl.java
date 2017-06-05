@@ -5,7 +5,6 @@
  */
 package com.dbproject.systay.dao.impl;
 
-import com.dbproject.systay.beans.Login;
 import com.dbproject.systay.beans.Reserva;
 import com.dbproject.systay.dao.interfaces.ReservaDao;
 import com.dbproject.systay.dao.rowmappers.ReservaRowMapper;
@@ -41,19 +40,21 @@ public class ReservaDaoImpl implements ReservaDao{
         String  dataCadastro = dateFormat.format(date); 
         String  dataEntrada = dateFormat.format(r.getDataEntrada());   
         String  dataSaida = dateFormat.format(r.getDataSaida());
-        r.setTotal_reserva(800);
 
-//        String query="insert into tb_reserva (id, total_reserva, dataCadastro, dataEntrada, dataSaida, observacao, responsavelGerencia) "
-//                + "values(sq_reserva.nextval,"+r.getTotal_reserva()+",'"+dataCadastro+"','"+dataEntrada+"','"+dataSaida+"','"
-//                +r.getObservacao()+"', (SELECT REF (A) FROM tb_administrador A WHERE A.login.username = "
-//                + "'"+r.getResponsavelGerencia().getLogin().getUsername()+"'))"; 
-
-        String query="insert into tb_reserva (id, total_reserva, dataCadastro, dataEntrada, dataSaida, observacao, responsavelGerencia, hospede)"
+        String query="insert into tb_reserva (id, total_reserva, dataCadastro, dataEntrada, dataSaida, observacao,"
+                + " responsavelGerencia, hospede, quarto) "
                 + "values(sq_reserva.nextval,"+r.getTotal_reserva()+",'"+dataCadastro+"','"+dataEntrada+"','"+dataSaida+"','"
                 +r.getObservacao()+"', (SELECT REF (A) FROM tb_administrador A WHERE A.login.username = "
                 + "'"+r.getResponsavelGerencia().getLogin().getUsername()+"'), (SELECT REF (H) FROM tb_hospede H "
-                + "WHERE H.numeroDocumento = '"+r.getHospede().getNumeroDocumento()+"'))"; 
-        System.err.println(query);
+                + "WHERE H.numeroDocumento = '"+r.getHospede().getNumeroDocumento()+"'), tp_nt_quarto(tp_quarto_comum("
+                + ""+r.getQuarto().get(0).getId()+", "+r.getQuarto().get(0).getNumero()+", '"+r.getQuarto().get(0).getObservacao()+"'"
+                + ", null, "+r.getQuarto().get(0).getArea()+", '"+r.getQuarto().get(0).getTem_varanda()+"', "+r.getQuarto().get(0).getRamal()+","
+                + ""+r.getQuarto().get(0).getValor_diaria()+", (SELECT REF (A) FROM tb_administrador A WHERE "
+                + "A.login.username = 'camila'), null, null), tp_quarto_comum("+r.getQuarto().get(1).getId()+", "+r.getQuarto().get(1).getNumero()+", "
+                + "'"+r.getQuarto().get(1).getObservacao()+"', null, "+r.getQuarto().get(1).getArea()+", '"+r.getQuarto().get(1).getTem_varanda()+"',"
+                + " "+r.getQuarto().get(1).getRamal()+", "+r.getQuarto().get(0).getValor_diaria()+", (SELECT REF (A) FROM tb_administrador A "
+                + "WHERE A.login.username = 'camila'), null, null)))"; 
+        
         return template.update(query);
     }
 
@@ -96,9 +97,9 @@ public class ReservaDaoImpl implements ReservaDao{
                  + "A.dataSaida as dataSaida, A.responsavelGerencia.login.username as username,"
                 + "A.hospede.numeroDocumento as numeroDocumento, A.hospede.nome as nome, "
                 + " A.dataCancelamento as dataCancelamento, A.observacao "+
-                "FROM tb_reserva A WHERE A.id='"+id+"'";
+                "FROM tb_reserva A WHERE A.id="+id+"";
         List<Reserva> reservas = template.query(query, new ReservaRowMapper());
         return reservas.get(0);
+
     }
-    
 }

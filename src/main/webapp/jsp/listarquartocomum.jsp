@@ -17,7 +17,7 @@
     
     <a href="cadastrarquartocomum"><h2>Cadastrar novo</h2></a> 
     <table border="2" width="70%" cellpadding="2">  
-    <tr><th>ID</th><th>Numero</th><th>Area</th><th>Ramal</th><th>Qtd camas</th><th>Tipo Cama</th><th>Valor diaria</th><th>Observacao</th><th>Resp. Gerencia</th><th>Tem varanda</th></tr>  
+    <tr><th>ID</th><th>Numero</th><th>Area</th><th>Ramal</th><th>Qtd camas</th><th>Tipo Cama</th><th>Valor diaria</th><th>Observacao</th><th>Tem varanda</th><th>Editar</th><th>Excluir</th></tr>  
        <c:forEach var="quartocomum" items="${list}">   
         <tr>
             <td>${quartocomum.id}</td>
@@ -28,7 +28,6 @@
             <td>${quartocomum.tipo_camas}</td>
             <td>${quartocomum.valor_diaria}</td>
             <td>${quartocomum.observacao}</td>
-            <td>${quartocomum.responsavelGerencia}</td>
             <td>${quartocomum.tem_varanda}</td>
                 
             <td><a href="editarquartocomum/${quartocomum.id}">Editar</a></td>  

@@ -16,7 +16,7 @@
     
     <a href="cadastrarquartofamilia"><h2>Cadastrar novo</h2></a> 
     <table border="2" width="70%" cellpadding="2">  
-    <tr><th>ID</th><th>Numero</th><th>Area</th><th>Ramal</th><th>Qtd camas adicionais</th><th>Valor diaria</th><th>Observacao</th><th>Resp. Gerencia</th><th>Tem varanda</th></tr>  
+    <tr><th>ID</th><th>Numero</th><th>Area</th><th>Ramal</th><th>Qtd camas adicionais</th><th>Valor diaria</th><th>Observacao</th><th>Tem varanda</th><th>Editar</th><th>Excluir</th></tr>  
        <c:forEach var="quartofamilia" items="${list}">   
         <tr>
             <td>${quartofamilia.id}</td>
@@ -26,7 +26,6 @@
             <td>${quartofamilia.qtd_camas_adicionais}</td>
             <td>${quartofamilia.valor_diaria}</td>
             <td>${quartofamilia.observacao}</td>
-            <td>${quartofamilia.responsavelGerencia}</td>
             <td>${quartofamilia.tem_varanda}</td>
                 
             <td><a href="editarquartofamilia/${quartofamilia.id}">Editar</a></td>  
