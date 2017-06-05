@@ -21,6 +21,7 @@
         <a href="listarreservas">Reserva</a><br/>
         <a href="listaradmins">Administradores</a><br/>
         <a href="listarhospedagens">Hospedagem</a><br/>
-        <a href="listarquartocomum">Quarto comum</a><br/>
+        <a href="listarquartocomum">Quarto Comum</a><br/>
+        <a href="listarquartofamilia">Quarto Familia</a><br/>
     </body>
 </html>

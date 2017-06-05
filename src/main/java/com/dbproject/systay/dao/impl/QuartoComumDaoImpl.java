@@ -50,8 +50,6 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
             +quartocomum.getObservacao()+"', " +quartocomum.getRamal()+", " +quartocomum.getValor_diaria()+", "+quartocomum.getQtd_camas()+", "
                     + "'"+quartocomum.getTipo_camas()+"', '"+quartocomum.getTem_varanda()+"', "+quartocomum.getArea()+")"; ;    
             System.out.println(sql);
-            
-
             return template.update(sql);
         }
         
