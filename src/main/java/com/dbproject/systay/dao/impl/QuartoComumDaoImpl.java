@@ -5,6 +5,8 @@
  */
 package com.dbproject.systay.dao.impl;
 
+import com.dbproject.systay.beans.Administrador;
+import com.dbproject.systay.beans.Login;
 import com.dbproject.systay.beans.QuartoComum;
 import com.dbproject.systay.dao.interfaces.QuartoComumDao;
 import com.dbproject.systay.dao.rowmappers.AdminRowMapper;
@@ -43,7 +45,7 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
             String sql = "INSERT INTO "+QUARTO_COMUM_TABLE+" (id, numero, observacao,ramal, valor_diaria, qtd_camas, tipo_camas, tem_varanda, area) "
             + "VALUES (sq_quarto_comum.nextval,"+quartocomum.getNumero()+", '"
             +quartocomum.getObservacao()+"', " +quartocomum.getRamal()+", " +quartocomum.getValor_diaria()+", "+quartocomum.getQtd_camas()+", "
-                    + "'"+quartocomum.getTipo_camas()+"', '"+quartocomum.getTem_varanda()+"', "+quartocomum.getArea()+")";    
+                    + "'"+quartocomum.getTipo_camas()+"', '"+quartocomum.getTem_varanda()+"', "+quartocomum.getArea()+")"; ;    
             System.out.println(sql);
             
 
@@ -65,6 +67,10 @@ public class QuartoComumDaoImpl implements QuartoComumDao {
                 q.setTipo_camas(rs.getString("tipo_camas"));
                 q.setObservacao(rs.getString("observacao"));
                 q.setTem_varanda(rs.getString("tem_varanda").charAt(0));
+                q.setArea(rs.getDouble("area"));
+//                Administrador adm = new Administrador();
+//                //adm.setNumeroDocumento(rs.getString("responsavel_doc"));
+//                q.setResponsavelGerencia(adm);
                 return q;    
             }
         });

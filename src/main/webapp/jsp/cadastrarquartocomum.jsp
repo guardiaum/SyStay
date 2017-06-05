@@ -55,7 +55,12 @@
                 <tr>
                     <td>Preco</td>
                     <td><form:input path="valor_diaria"  /></td> 
-                </tr>   
+                </tr>
+<!--                <tr>    
+                    <td>Administrador: </td>    
+                    <td><form:input path="responsavelGerencia.login.username"   readonly="true" 
+                        value='<%= session.getAttribute( "theName" ) %>'  maxlength="15"/></td>  
+                </tr>-->
                 
                 <tr>    
                     <td> </td>    

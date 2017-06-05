@@ -33,6 +33,9 @@
                 <td>${quartocomum.responsavelGerencia}</td>
                 <td>${quartocomum.tem_varanda}</td>
                 
+                <td><a href="editarhospedagem/${hos.id}">Editar</a></td>  
+                <td><a href="deletarhospedagem/${hos.id}">Excluir</a></td> 
+                
             </tr>  
         </c:forEach>  
         </table>  
